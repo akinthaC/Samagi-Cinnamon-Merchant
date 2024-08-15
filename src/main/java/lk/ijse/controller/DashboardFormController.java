@@ -1,6 +1,9 @@
 package lk.ijse.controller;
 
 public class DashboardFormController {
-    void navigateToDashboard() {}
+    void navigateToDashboard() {
+        int x;
+        /*fuk to*/
+    }
 
 }
