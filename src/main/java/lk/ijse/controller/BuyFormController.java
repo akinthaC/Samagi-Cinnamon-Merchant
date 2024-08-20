@@ -66,4 +66,14 @@ public class BuyFormController {
 
     }
 
+    @FXML
+    void comboOnActionContact(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comboOnActionName(ActionEvent event) {
+
+    }
+
 }
