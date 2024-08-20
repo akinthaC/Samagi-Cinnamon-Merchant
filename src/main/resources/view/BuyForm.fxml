@@ -74,13 +74,13 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox layoutX="1216.0" layoutY="101.0" onAction="#comboOnActionContact" prefHeight="34.0" prefWidth="211.0" />
+      <JFXComboBox fx:id="comBoxContact" layoutX="1216.0" layoutY="101.0" onAction="#comBoxOnActionContact" prefHeight="34.0" prefWidth="211.0" />
       <Label layoutX="1058.0" layoutY="174.0" prefHeight="26.0" prefWidth="142.0" text="Customer Name :-">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox layoutX="1202.0" layoutY="171.0" onAction="#comboOnActionName" prefHeight="34.0" prefWidth="290.0" />
+      <JFXComboBox fx:id="comBoxName" layoutX="1202.0" layoutY="171.0" onAction="#comBoxOnActionName" prefHeight="34.0" prefWidth="290.0" />
       <JFXButton buttonType="RAISED" layoutX="1259.0" layoutY="368.0" onAction="#btnOnActionAddToCart" prefHeight="34.0" prefWidth="158.0" ripplerFill="#8cd8ff" style="-fx-background-color: #8cd8ff;" text="Add to Cart">
          <font>
             <Font name="System Bold" size="17.0" />

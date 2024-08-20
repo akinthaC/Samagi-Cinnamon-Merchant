@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -24,6 +25,12 @@ public class BuyFormController {
 
     @FXML
     private TableColumn<?, ?> colWeight;
+
+    @FXML
+    private JFXComboBox<?> comBoxContact;
+
+    @FXML
+    private JFXComboBox<?> comBoxName;
 
     @FXML
     private Label lblNetWeight;
@@ -67,12 +74,12 @@ public class BuyFormController {
     }
 
     @FXML
-    void comboOnActionContact(ActionEvent event) {
+    void comBoxOnActionContact(ActionEvent event) {
 
     }
 
     @FXML
-    void comboOnActionName(ActionEvent event) {
+    void comBoxOnActionName(ActionEvent event) {
 
     }
 
