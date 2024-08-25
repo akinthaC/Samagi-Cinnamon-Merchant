@@ -1,13 +1,19 @@
 package lk.ijse.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.repository.SupplierRepo;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
 
 public class BuyFormController {
 
@@ -27,10 +33,10 @@ public class BuyFormController {
     private TableColumn<?, ?> colWeight;
 
     @FXML
-    private JFXComboBox<?> comBoxContact;
+    private JFXComboBox<String> comBoxContact;
 
     @FXML
-    private JFXComboBox<?> comBoxName;
+    private JFXComboBox<String> comBoxName;
 
     @FXML
     private Label lblNetWeight;
@@ -53,13 +59,28 @@ public class BuyFormController {
     @FXML
     private TextField txtWeight;
 
+    public void initialize() throws IOException {
+        comBoxContact.setEditable(true);
+        comBoxName.setEditable(true);
+    }
+
     @FXML
     void btnOnActionAddToCart(ActionEvent event) {
+        String CusName = comBoxName.getValue();
+        String CusContact = comBoxContact.getValue();
+        String Weight = txtWeight.getText();
+        String CuttingAmount = txtCuttingAmount.getText();
+        String BuyingPrice = txtBuyingPrice.getText();
+        String ProductType = lblProductType.getText();
+
+        System.out.println("name"+ comBoxName.getValue());
+
 
     }
 
     @FXML
     void btnOnActionCinnamon(ActionEvent event) {
+
 
     }
 
@@ -76,11 +97,49 @@ public class BuyFormController {
     @FXML
     void comBoxOnActionContact(ActionEvent event) {
 
+
     }
 
     @FXML
-    void comBoxOnActionName(ActionEvent event) {
+    void comBoxOnActionName(ActionEvent event) throws SQLException {
+        ObservableList<String> filterData = FXCollections.observableArrayList();
+        String enteredName = comBoxName.getEditor().getText();
+
+        List<String> stringList = SupplierRepo.searchSupplierNmae();
+
+        boolean status;
+
+        do {
+
+            try {
+
+                for (String name : stringList) {
+                    if (name.contains(enteredName)) {
+                        filterData.add(name);
+                    }
+                }
+                comBoxName.setItems(filterData);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+
+            }
+            status= false;
+
+        } while (status);{
+                ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Customer not found \n Do you want add Customer", yes, no).showAndWait();
+
+                if (type.orElse(no) == yes) {
+                    System.out.println("Okkkk");
+                }else {
+                    System.out.println("nooo");
+                }
+            }
 
     }
 
+
 }
+

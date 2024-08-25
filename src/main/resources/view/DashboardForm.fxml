@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="827.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
+<AnchorPane fx:id="MainPain" prefHeight="827.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
    <children>
       <Label layoutX="416.0" layoutY="34.0" prefHeight="74.0" prefWidth="951.0" text="Samagi Cinnamon Exporters &amp; Dealers.">
          <font>
