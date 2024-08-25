@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -47,25 +45,6 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </JFXButton>
-      <AnchorPane layoutX="224.0" layoutY="203.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-color: pink; -fx-background-radius: 20 20 20 20;" />
-      <AnchorPane layoutX="224.0" layoutY="432.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-color: blue; -fx-background-radius: 20 20 20 20;" />
-      <AnchorPane layoutX="1123.0" layoutY="203.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-color: pink; -fx-background-radius: 20 20 20 20;" />
-      <AnchorPane layoutX="1123.0" layoutY="432.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-color: blue; -fx-background-radius: 20 20 20 20;" />
-      <AnchorPane layoutX="556.0" layoutY="203.0" prefHeight="130.0" prefWidth="500.0" style="-fx-background-color: purple; -fx-background-radius: 20 20 20 20;" />
-      <JFXButton fx:id="btnBuy" buttonType="RAISED" layoutY="699.0" onAction="#btnOnActionBuy" prefHeight="74.0" prefWidth="284.0" style="-fx-background-color: #ff0000; -fx-background-radius: 0 50 50 0;" text="Buy Anything.." textFill="WHITE">
-         <font>
-            <Font name="Calibri Bold" size="28.0" />
-         </font>
-      </JFXButton>
-      <PieChart layoutX="556.0" layoutY="350.0" style="-fx-background-color: yellow;">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </PieChart>
-      <JFXButton buttonType="RAISED" layoutX="1315.0" layoutY="687.0" prefHeight="74.0" prefWidth="284.0" style="-fx-background-color: #1fb127; -fx-background-radius: 50 0 0 50;" text="Sell Anything...." textFill="WHITE">
-         <font>
-            <Font name="Calibri Bold" size="28.0" />
-         </font>
-      </JFXButton>
+      <AnchorPane fx:id="rootAnchorPane" layoutY="176.0" prefHeight="651.0" prefWidth="1598.0" />
    </children>
 </AnchorPane>
