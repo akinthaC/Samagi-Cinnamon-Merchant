@@ -1,14 +1,12 @@
 package lk.ijse.controller;
 
 import com.jfoenix.controls.JFXComboBox;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.repository.SupplierRepo;
 
 import java.io.IOException;
 import java.sql.SQLException;

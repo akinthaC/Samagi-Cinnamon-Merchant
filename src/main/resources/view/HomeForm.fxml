@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="657.0" prefWidth="1596.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.HomeFormController">
+   <children>
+      <AnchorPane layoutX="235.0" layoutY="68.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-color: pink; -fx-background-radius: 20 20 20 20;" />
+      <AnchorPane layoutX="235.0" layoutY="297.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-color: blue; -fx-background-radius: 20 20 20 20;" />
+      <AnchorPane layoutX="1134.0" layoutY="68.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-color: pink; -fx-background-radius: 20 20 20 20;" />
+      <AnchorPane layoutX="1134.0" layoutY="297.0" prefHeight="200.0" prefWidth="268.0" style="-fx-background-color: blue; -fx-background-radius: 20 20 20 20;" />
+      <AnchorPane layoutX="567.0" layoutY="68.0" prefHeight="130.0" prefWidth="500.0" style="-fx-background-color: purple; -fx-background-radius: 20 20 20 20;" />
+      <JFXButton fx:id="btnBuy" buttonType="RAISED" layoutX="17.0" layoutY="564.0" onAction="#btnOnActionBuy" prefHeight="74.0" prefWidth="284.0" style="-fx-background-color: #ff0000; -fx-background-radius: 0 50 50 0;" text="Buy Anything.." textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="28.0" />
+         </font>
+      </JFXButton>
+      <PieChart layoutX="567.0" layoutY="215.0" style="-fx-background-color: yellow;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </PieChart>
+      <JFXButton fx:id="btnSell" buttonType="RAISED" layoutX="1296.0" layoutY="552.0" onAction="#btnOnActionSell" prefHeight="74.0" prefWidth="284.0" style="-fx-background-color: #1fb127; -fx-background-radius: 50 0 0 50;" text="Sell Anything...." textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="28.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
