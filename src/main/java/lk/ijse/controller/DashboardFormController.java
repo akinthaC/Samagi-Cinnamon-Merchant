@@ -34,4 +34,30 @@ public class DashboardFormController {
         newPane.setOpacity(1);
 
     }
+
+
+    @FXML
+    void btnOnActionEmployee(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnOnActionHome(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnOnActionItems(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnOnActionStock(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnOnActionSupplier(ActionEvent event) {
+
+    }
 }
