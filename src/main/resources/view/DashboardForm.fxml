@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.MotionBlur?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="MainPain" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
+<AnchorPane fx:id="MainPain" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
    <children>
       <Label layoutX="392.0" layoutY="16.0" prefHeight="74.0" prefWidth="951.0" text="Samagi Cinnamon Exporters &amp; Dealers.">
          <font>
@@ -56,10 +54,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </JFXButton>
-      <AnchorPane fx:id="rootAnchorPane" layoutX="1.0" layoutY="176.0" prefHeight="724.0" prefWidth="1598.0">
-         <effect>
-            <MotionBlur />
-         </effect></AnchorPane>
+      <AnchorPane fx:id="rootAnchorPane" layoutX="1.0" layoutY="176.0" prefHeight="724.0" prefWidth="1598.0" />
       <ImageView fitHeight="150.0" fitWidth="158.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/samagiLogo.png" />
