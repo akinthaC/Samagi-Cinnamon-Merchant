@@ -1,9 +1,14 @@
 package lk.ijse.controller;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -16,15 +21,16 @@ public class DashboardFormController {
     private AnchorPane rootAnchorPane;
 
 
+
     public void btnOnActionBuy(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/BuyForm.fxml"));
         AnchorPane newPane = loader.load();
 
 
-        MainPain.getChildren().clear();
+        rootAnchorPane.getChildren().clear();
 
 
-        MainPain.getChildren().add(newPane);
+        rootAnchorPane.getChildren().add(newPane);
         AnchorPane.setTopAnchor(newPane, 0.0);
         AnchorPane.setRightAnchor(newPane, 0.0);
         AnchorPane.setBottomAnchor(newPane, 0.0);
@@ -42,7 +48,9 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnOnActionHome(ActionEvent event) {
+    void btnOnActionHome(ActionEvent event) throws IOException {
+        loadFormWithAtractiveAnimation("/view/HomeForm.fxml");
+
 
     }
 
@@ -60,4 +68,37 @@ public class DashboardFormController {
     void btnOnActionSupplier(ActionEvent event) {
 
     }
+
+    private void loadFormWithAtractiveAnimation(String formPath) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(formPath));
+        AnchorPane newPane = loader.load();
+
+        newPane.setOpacity(0);
+        rootAnchorPane.getChildren().add(newPane);
+
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), newPane);
+        translateTransition.setFromX(newPane.getWidth());
+        translateTransition.setToX(0);
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), newPane);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+
+
+        ScaleTransition zoomIn = new ScaleTransition(Duration.seconds(0.5), newPane);
+        zoomIn.setFromX(0.5);
+        zoomIn.setFromY(0.5);
+        zoomIn.setToX(1.0);
+        zoomIn.setToY(1.0);
+
+        // Combine all transitions
+        ParallelTransition parallelTransition = new ParallelTransition();
+        parallelTransition.getChildren().addAll(translateTransition,fadeTransition,zoomIn);
+        parallelTransition.setOnFinished(event -> {
+            rootAnchorPane.getChildren().clear();
+            rootAnchorPane.getChildren().add(newPane);
+        });
+        parallelTransition.play();
+    }
 }
+
