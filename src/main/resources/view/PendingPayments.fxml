@@ -21,13 +21,13 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comBoxPaymentNo" layoutX="178.0" layoutY="132.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="116.0" />
+      <JFXComboBox fx:id="comBoxPaymentNo" layoutX="178.0" layoutY="132.0" prefHeight="26.0" prefWidth="116.0" />
       <Label layoutX="451.0" layoutY="131.0" prefHeight="26.0" prefWidth="94.0" text="Order No. :-">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comBoxOrderNo" layoutX="559.0" layoutY="132.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="116.0" />
+      <JFXComboBox fx:id="comBoxOrderNo" layoutX="559.0" layoutY="132.0" prefHeight="26.0" prefWidth="116.0" />
       <Label layoutX="54.0" layoutY="195.0" prefHeight="26.0" prefWidth="125.0" text="Total Amount :-">
          <font>
             <Font name="System Bold" size="16.0" />
