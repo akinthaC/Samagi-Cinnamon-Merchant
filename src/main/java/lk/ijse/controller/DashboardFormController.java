@@ -22,26 +22,6 @@ public class DashboardFormController {
 
 
 
-    public void btnOnActionBuy(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/BuyForm.fxml"));
-        AnchorPane newPane = loader.load();
-
-
-        rootAnchorPane.getChildren().clear();
-
-
-        rootAnchorPane.getChildren().add(newPane);
-        AnchorPane.setTopAnchor(newPane, 0.0);
-        AnchorPane.setRightAnchor(newPane, 0.0);
-        AnchorPane.setBottomAnchor(newPane, 0.0);
-        AnchorPane.setLeftAnchor(newPane, 0.0);
-
-
-        newPane.setOpacity(1);
-
-    }
-
-
     @FXML
     void btnOnActionEmployee(ActionEvent event) {
 
@@ -99,6 +79,34 @@ public class DashboardFormController {
             rootAnchorPane.getChildren().add(newPane);
         });
         parallelTransition.play();
+    }
+
+    @FXML
+    void btnOnActionPayment(ActionEvent event) {
+
+    }
+    @FXML
+    void btnOnActionBuy(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/BuyForm.fxml"));
+        AnchorPane newPane = loader.load();
+
+
+        rootAnchorPane.getChildren().clear();
+
+
+        rootAnchorPane.getChildren().add(newPane);
+        AnchorPane.setTopAnchor(newPane, 0.0);
+        AnchorPane.setRightAnchor(newPane, 0.0);
+        AnchorPane.setBottomAnchor(newPane, 0.0);
+        AnchorPane.setLeftAnchor(newPane, 0.0);
+
+
+        newPane.setOpacity(1);
+    }
+
+    @FXML
+    void btnOnActionSell(ActionEvent event) {
+
     }
 }
 
