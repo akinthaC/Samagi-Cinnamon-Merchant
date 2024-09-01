@@ -4,10 +4,14 @@ import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 public class PaymentInfoFormController {
+
+    @FXML
+    private TextArea txtAreaDescription;
 
     @FXML
     private JFXComboBox<?> comBoxType;
