@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPain" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
+<AnchorPane fx:id="MainPain" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
    <children>
       <Label layoutX="392.0" layoutY="16.0" prefHeight="74.0" prefWidth="951.0" text="Samagi Cinnamon Exporters &amp; Dealers.">
          <font>
             <Font name="System Bold" size="50.0" />
          </font>
       </Label>
-      <JFXButton layoutX="477.0" layoutY="116.0" onAction="#btnOnActionHome" style="-fx-background-color: #95a5a6;" text="Home">
+      <ImageView fitHeight="150.0" fitWidth="158.0" layoutX="77.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/samagiLogo.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="306.0" layoutY="116.0" onAction="#btnOnActionHome" style="-fx-background-color: #95a5a6;" text="Home">
          <font>
             <Font size="18.0" />
          </font>
@@ -22,7 +28,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="636.0" layoutY="116.0" onAction="#btnOnActionSupplier" style="-fx-background-color: #95a5a6;" text="Supplier">
+      <JFXButton layoutX="465.0" layoutY="116.0" onAction="#btnOnActionSupplier" style="-fx-background-color: #95a5a6;" text="Supplier">
          <font>
             <Font size="18.0" />
          </font>
@@ -30,7 +36,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="810.0" layoutY="116.0" onAction="#btnOnActionItems" style="-fx-background-color: #95a5a6;" text="Items">
+      <JFXButton layoutX="637.0" layoutY="116.0" onAction="#btnOnActionItems" style="-fx-background-color: #95a5a6;" text="Items">
          <font>
             <Font size="18.0" />
          </font>
@@ -38,7 +44,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="970.0" layoutY="116.0" onAction="#btnOnActionStock" style="-fx-background-color: #95a5a6;" text="Stock">
+      <JFXButton layoutX="786.0" layoutY="116.0" onAction="#btnOnActionStock" style="-fx-background-color: #95a5a6;" text="Stock">
          <font>
             <Font size="18.0" />
          </font>
@@ -46,7 +52,31 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="1125.0" layoutY="115.0" onAction="#btnOnActionEmployee" style="-fx-background-color: #95a5a6;" text="Employees">
+      <JFXButton layoutX="1103.0" layoutY="115.0" onAction="#btnOnActionEmployee" style="-fx-background-color: #95a5a6;" text="Employees">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="934.0" layoutY="115.0" onAction="#btnOnActionPayment" style="-fx-background-color: #95a5a6;" text="Payment">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="1283.0" layoutY="115.0" onAction="#btnOnActionBuy" style="-fx-background-color: #95a5a6;" text="Buy">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="1406.0" layoutY="115.0" onAction="#btnOnActionSell" style="-fx-background-color: #95a5a6;" text="Sell">
          <font>
             <Font size="18.0" />
          </font>
@@ -55,10 +85,5 @@
          </cursor>
       </JFXButton>
       <AnchorPane fx:id="rootAnchorPane" layoutX="1.0" layoutY="176.0" prefHeight="724.0" prefWidth="1598.0" />
-      <ImageView fitHeight="150.0" fitWidth="158.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/samagiLogo.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
