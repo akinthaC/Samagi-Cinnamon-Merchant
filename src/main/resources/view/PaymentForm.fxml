@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PaymentFormController">
    <children>
-      <TableView fx:id="tblPayment" layoutX="139.0" layoutY="65.0" prefHeight="266.0" prefWidth="1290.0">
+      <TableView fx:id="tblPayment" layoutX="121.0" layoutY="65.0" prefHeight="266.0" prefWidth="1290.0">
         <columns>
           <TableColumn fx:id="colPaymentNo" prefWidth="91.99996566772461" text="Payment No." />
           <TableColumn fx:id="colDate" prefWidth="119.19999694824219" text="Date" />
@@ -24,41 +25,78 @@
             <TableColumn fx:id="colStatus" prefWidth="117.5999755859375" text="Now Status" />
         </columns>
       </TableView>
-      <Label layoutX="140.0" layoutY="468.0" prefHeight="26.0" prefWidth="94.0" text="Order No. :-">
+      <Label layoutX="554.0" layoutY="380.0" prefHeight="26.0" prefWidth="94.0" text="Order No. :-">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblOrderNo" layoutX="235.0" layoutY="469.0" prefHeight="26.0" prefWidth="178.0" text=" -" textFill="#ff000d">
-         <font>
-            <Font name="System Bold Italic" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="140.0" layoutY="402.0" prefHeight="26.0" prefWidth="116.0" text="Payment No. :-">
+      <Label layoutX="122.0" layoutY="380.0" prefHeight="26.0" prefWidth="116.0" text="Payment No. :-">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comBoxType" layoutX="264.0" layoutY="401.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="116.0" />
-      <Label layoutX="141.0" layoutY="650.0" prefHeight="26.0" prefWidth="66.0" text="Date :-">
+      <JFXComboBox fx:id="comBoxP" layoutX="246.0" layoutY="379.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="116.0" />
+      <Label layoutX="124.0" layoutY="644.0" prefHeight="26.0" prefWidth="66.0" text="Date :-">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" layoutX="201.0" layoutY="651.0" prefHeight="26.0" prefWidth="170.0">
-         <font>
-            <Font name="System Bold Italic" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="141.0" layoutY="528.0" prefHeight="26.0" prefWidth="130.0" text="Advance (Rs.) :-">
+      <Label layoutX="123.0" layoutY="462.0" prefHeight="26.0" prefWidth="130.0" text="Advance (Rs.) :-">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPayAmount" layoutX="270.0" layoutY="524.0" prefHeight="34.0" prefWidth="170.0">
+      <TextField fx:id="txtPayAmount" layoutX="252.0" layoutY="458.0" prefHeight="34.0" prefWidth="170.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
+      <Label layoutX="123.0" layoutY="538.0" prefHeight="26.0" prefWidth="161.0" text="Amount to be pay :-">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPayAmount1" layoutX="282.0" layoutY="534.0" prefHeight="34.0" prefWidth="178.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <JFXComboBox fx:id="comBoxType1" layoutX="659.0" layoutY="380.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="116.0" />
+      <TextField fx:id="txtPayAmount11" layoutX="182.0" layoutY="641.0" prefHeight="34.0" prefWidth="178.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="554.0" layoutY="450.0" prefHeight="26.0" prefWidth="108.0" text="Description :-">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtAreaDescription" layoutX="662.0" layoutY="449.0" prefHeight="71.0" prefWidth="306.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextArea>
+      <Label layoutX="554.0" layoutY="554.0" prefHeight="26.0" prefWidth="129.0" text="Payment Type :-">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="comBoxType2" layoutX="686.0" layoutY="555.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="101.0" />
+      <JFXButton buttonType="RAISED" layoutX="554.0" layoutY="636.0" onAction="#btnOnActionPayNow" prefHeight="20.0" prefWidth="150.0" ripplerFill="#009e05" style="-fx-background-color: #009e05;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="740.0" layoutY="636.0" onAction="#btnOnActionPayNow" prefHeight="20.0" prefWidth="150.0" ripplerFill="RED" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1124.0" layoutY="474.0" onAction="#btnOnActionPayNow" prefHeight="127.0" prefWidth="295.0" ripplerFill="#009e05" style="-fx-background-color: #3498db;" text="View Pending Payments " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
