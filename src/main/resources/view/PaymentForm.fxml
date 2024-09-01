@@ -35,7 +35,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comBoxP" layoutX="246.0" layoutY="379.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="116.0" />
+      <JFXComboBox fx:id="comBoxPaymentNo" layoutX="246.0" layoutY="379.0" prefHeight="26.0" prefWidth="116.0" />
       <Label layoutX="124.0" layoutY="644.0" prefHeight="26.0" prefWidth="66.0" text="Date :-">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -46,7 +46,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPayAmount" layoutX="252.0" layoutY="458.0" prefHeight="34.0" prefWidth="170.0">
+      <TextField fx:id="txtAdvance" layoutX="252.0" layoutY="458.0" prefHeight="34.0" prefWidth="170.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -56,13 +56,13 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPayAmount1" layoutX="282.0" layoutY="534.0" prefHeight="34.0" prefWidth="178.0">
+      <TextField fx:id="txtAmountToBePay" layoutX="282.0" layoutY="534.0" prefHeight="34.0" prefWidth="178.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <JFXComboBox fx:id="comBoxType1" layoutX="659.0" layoutY="380.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="116.0" />
-      <TextField fx:id="txtPayAmount11" layoutX="182.0" layoutY="641.0" prefHeight="34.0" prefWidth="178.0">
+      <JFXComboBox fx:id="comBoxOrderNo" layoutX="659.0" layoutY="380.0" prefHeight="26.0" prefWidth="116.0" />
+      <TextField fx:id="txtDate" layoutX="182.0" layoutY="641.0" prefHeight="34.0" prefWidth="178.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -82,18 +82,18 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comBoxType2" layoutX="686.0" layoutY="555.0" onKeyPressed="#comBoxOnActionSearchContact1" onKeyReleased="#comBoxOnActionContact" prefHeight="26.0" prefWidth="101.0" />
-      <JFXButton buttonType="RAISED" layoutX="554.0" layoutY="636.0" onAction="#btnOnActionPayNow" prefHeight="20.0" prefWidth="150.0" ripplerFill="#009e05" style="-fx-background-color: #009e05;" text="Update" textFill="WHITE">
+      <JFXComboBox fx:id="comBoxType" layoutX="686.0" layoutY="555.0" prefHeight="26.0" prefWidth="101.0" />
+      <JFXButton buttonType="RAISED" layoutX="554.0" layoutY="636.0" onAction="#btnOnActionUpdate" prefHeight="20.0" prefWidth="150.0" ripplerFill="#009e05" style="-fx-background-color: #009e05;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="740.0" layoutY="636.0" onAction="#btnOnActionPayNow" prefHeight="20.0" prefWidth="150.0" ripplerFill="RED" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="740.0" layoutY="636.0" onAction="#btnOnActionDelete" prefHeight="20.0" prefWidth="150.0" ripplerFill="RED" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1124.0" layoutY="474.0" onAction="#btnOnActionPayNow" prefHeight="127.0" prefWidth="295.0" ripplerFill="#009e05" style="-fx-background-color: #3498db;" text="View Pending Payments " textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="1124.0" layoutY="474.0" onAction="#btnOnActionPendingPayments" prefHeight="127.0" prefWidth="295.0" ripplerFill="#009e05" style="-fx-background-color: #3498db;" text="View Pending Payments " textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

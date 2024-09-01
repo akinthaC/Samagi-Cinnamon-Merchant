@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 
 public class PendingPaymentsController {
 
@@ -30,16 +29,6 @@ public class PendingPaymentsController {
 
     @FXML
     void btnOnActionPayAdvance(ActionEvent event) {
-
-    }
-
-    @FXML
-    void comBoxOnActionContact(KeyEvent event) {
-
-    }
-
-    @FXML
-    void comBoxOnActionSearchContact1(KeyEvent event) {
 
     }
 

@@ -11,9 +11,6 @@ import javafx.scene.input.KeyEvent;
 public class PaymentInfoFormController {
 
     @FXML
-    private TextArea txtAreaDescription;
-
-    @FXML
     private JFXComboBox<?> comBoxType;
 
     @FXML
@@ -27,6 +24,9 @@ public class PaymentInfoFormController {
 
     @FXML
     private Label lblTotalAmount;
+
+    @FXML
+    private TextArea txtAreaDescription;
 
     @FXML
     private TextField txtPayAmount;
