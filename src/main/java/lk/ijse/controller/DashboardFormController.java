@@ -20,7 +20,9 @@ public class DashboardFormController {
     @FXML
     private AnchorPane rootAnchorPane;
 
-
+    public void initialize() throws IOException {
+        btnOnActionHome(new ActionEvent());
+    }
 
     @FXML
     void btnOnActionEmployee(ActionEvent event) {
@@ -87,7 +89,9 @@ public class DashboardFormController {
     }
     @FXML
     void btnOnActionBuy(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/BuyForm.fxml"));
+        loadFormWithAtractiveAnimation("/view/BuyForm.fxml");
+
+       /* FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/BuyForm.fxml"));
         AnchorPane newPane = loader.load();
 
 
@@ -101,7 +105,7 @@ public class DashboardFormController {
         AnchorPane.setLeftAnchor(newPane, 0.0);
 
 
-        newPane.setOpacity(1);
+        newPane.setOpacity(1);*/
     }
 
     @FXML

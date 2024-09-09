@@ -8,12 +8,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.KeyEvent;
 
+import javafx.stage.Stage;
 import lk.ijse.model.tm.cartTm;
 import lk.ijse.repository.ItemRepo;
 import lk.ijse.repository.SupplierRepo;
@@ -102,12 +105,13 @@ public class BuyFormController {
         double CuttingAmount = Double.parseDouble(txtCuttingAmount.getText());
         double BuyingPrice = Double.parseDouble(txtBuyingPrice.getText());
         String ProductType = lblProductType.getText();
-        double Total = 0;
 
-        double cuttingPrice = (BuyingPrice * CuttingAmount)/100;
-        double buyTotal = BuyingPrice-cuttingPrice;
 
-        Total =buyTotal * Weight;
+        double cuttingWeight = (Weight * CuttingAmount)/100;
+        double netWeight = Weight - cuttingWeight;
+        double buyTotal = BuyingPrice * netWeight;
+
+
 
 
         System.out.println("name"+ comBoxName.getValue());
@@ -141,7 +145,7 @@ public class BuyFormController {
             }
         }
 
-        cartTm cartTm = new cartTm(ProductType,Weight,buyTotal,Total,CuttingAmount,btnRemove);
+        cartTm cartTm = new cartTm(ProductType,Weight,BuyingPrice,buyTotal,CuttingAmount,btnRemove);
         obList.add(cartTm);
 
         tblCart.setItems(obList);
@@ -152,11 +156,10 @@ public class BuyFormController {
     }
 
     private void clearFields() {
-        comBoxName.setValue(null);
-        comBoxContact.setValue(null);
         txtWeight.setText(null);
         txtBuyingPrice.setText(null);
-        txtCuttingAmount.setText(null);
+        txtCuttingAmount.setText("3");
+        lblProductType.setText(null);
     }
 
     private void calculateNetTotal() {
@@ -334,9 +337,22 @@ public class BuyFormController {
         // Add the loaded content to the main pane
         buyPain.getChildren().clear();
         buyPain.getChildren().add(contentPane);
+        
+        openPaymentInfo();
 
     }
 
+    private void openPaymentInfo() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PaymentInfoForm.fxml"));
+        Parent rootNode = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootNode));
+        stage.centerOnScreen();
+        stage.setTitle("AddPayment Form");
+
+        stage.show();
+    }
 
 
     @FXML

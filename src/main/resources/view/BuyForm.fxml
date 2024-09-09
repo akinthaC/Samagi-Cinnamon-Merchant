@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="buyPain" prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BuyFormController">
+<AnchorPane fx:id="buyPain" prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BuyFormController">
    <children>
       <JFXButton buttonType="RAISED" layoutX="144.0" layoutY="26.0" onAction="#btnOnActionCinnamon" prefHeight="76.0" prefWidth="187.0" style="-fx-background-color: #f1c40f;" text="Cinnamon">
          <font>
@@ -96,12 +92,12 @@
             <TableColumn fx:id="colStatus" prefWidth="76.800048828125" text="Active" />
         </columns>
       </TableView>
-      <Label layoutX="728.0" layoutY="622.0" prefHeight="36.0" prefWidth="43.0" text="Net">
+      <Label layoutX="728.0" layoutY="622.0" prefHeight="36.0" prefWidth="80.0" text="Total">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="729.0" layoutY="657.0" prefHeight="36.0" prefWidth="158.0" text="Weight (kg.)">
+      <Label layoutX="729.0" layoutY="657.0" prefHeight="36.0" prefWidth="158.0" text="Amount (Rs.)">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
