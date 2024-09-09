@@ -1,17 +1,25 @@
 package lk.ijse.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.repository.OrdersRepo;
+import lk.ijse.repository.PaymentInfoRepo;
+
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class PaymentInfoFormController {
 
     @FXML
-    private JFXComboBox<?> comBoxType;
+    private JFXComboBox<String> comBoxType;
 
     @FXML
     private Label lblDate;
@@ -31,19 +39,60 @@ public class PaymentInfoFormController {
     @FXML
     private TextField txtPayAmount;
 
+    public void initialize() {
+        lblDate.setText(String.valueOf(LocalDate.now()));
+        getPaymentMethods();
+        //getCurrentPaymentNo();
+        //setOrderNo For The Payment Info page
+    }
+
     @FXML
     void btnOnActionPayNow(ActionEvent event) {
+        String orderNo = lblOrderNo.getText();
+        String paymentNo = lblPaymentNo.getText();
+        String date = lblDate.getText();
+        String totalAmount = lblTotalAmount.getText();
+        double payAmount = Double.parseDouble(txtPayAmount.getText());
+        String description = txtAreaDescription.getText();
 
     }
 
-    @FXML
-    void comBoxOnActionContact(KeyEvent event) {
 
+    private void getCurrentPaymentNo() {
+        try {
+            String currentNo = PaymentInfoRepo.getCurrentNo();
+
+            String nextPayNo = generateNextPaymentNo(currentNo);
+            lblPaymentNo.setText(nextPayNo);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @FXML
-    void comBoxOnActionSearchContact1(KeyEvent event) {
+    private String generateNextPaymentNo(String currentNo) {
 
+        if(currentNo != null) {
+
+            String[] split = currentNo.split("[oO]");
+
+            int idNum = Integer.parseInt(split[1]);
+
+            return "P" + String.format("%03d", ++idNum);
+
+        }
+
+        return "P001";
+    }
+
+    private void getPaymentMethods() {
+        ObservableList<String> obList = FXCollections.observableArrayList(
+                "Cash",
+                "Credit Card",
+                "Cheque"
+        );
+
+        comBoxType.setItems(obList);
     }
 
 }
