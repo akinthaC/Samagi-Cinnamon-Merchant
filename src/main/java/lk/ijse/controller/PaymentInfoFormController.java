@@ -5,10 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.model.PaymentInfo;
 import lk.ijse.repository.OrdersRepo;
 import lk.ijse.repository.PaymentInfoRepo;
 
@@ -55,6 +57,18 @@ public class PaymentInfoFormController {
         double payAmount = Double.parseDouble(txtPayAmount.getText());
         String description = txtAreaDescription.getText();
 
+        PaymentInfo paymentInfo = new PaymentInfo(orderNo, paymentNo, date, totalAmount, payAmount, description);
+
+        try {
+            boolean isSaved = PaymentInfoRepo.save(paymentInfo);
+            if (isSaved){
+                new Alert(Alert.AlertType.INFORMATION, "Payment info updated successfully").show();
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Payment info update failed").show();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
