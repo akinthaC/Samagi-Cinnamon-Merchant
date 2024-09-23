@@ -12,7 +12,7 @@ import java.util.List;
 public class ItemRepo {
 
     public static List<String> gtAllItems(String type) throws SQLException {
-        String sql = "SELECT name FROM item WHERE type= ?";
+        String sql = "SELECT itemName FROM item WHERE type= ?";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
