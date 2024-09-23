@@ -80,6 +80,7 @@ public class BuyFormController {
     private AnchorPane buyPain;
 
     static String orId;
+    static String totalAmount;
 
     private ObservableList<cartTm> obList = FXCollections.observableArrayList();
 
@@ -196,6 +197,7 @@ public class BuyFormController {
             netTotal += (double) colTotal.getCellData(i);
         }
         lblNetWeight.setText(String.valueOf(netTotal));
+        totalAmount = String.valueOf(netTotal);
     }
 
     @FXML
@@ -256,8 +258,6 @@ public class BuyFormController {
                 System.out.println("Button clicked: " + name);
                 lblProductType.setText(name);
             });
-
-
 
             // Set the button's position in the AnchorPane
             AnchorPane.setTopAnchor(button, yPosition);
@@ -336,8 +336,6 @@ public class BuyFormController {
                 System.out.println("Button clicked: " + name);
                 lblProductType.setText(name);
             });
-
-
 
             // Set the button's position in the AnchorPane
             AnchorPane.setTopAnchor(button, yPosition);

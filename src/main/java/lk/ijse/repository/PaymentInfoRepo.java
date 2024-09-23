@@ -23,8 +23,17 @@ public class PaymentInfoRepo {
         return null;
     }
 
-    public static boolean save(PaymentInfo paymentInfo) {
-        String sql = "";
-        return false;
+    public static boolean save(PaymentInfo paymentInfo) throws SQLException {
+        String sql = "insert into payment values(?,?,?,?,?,?,?)";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setObject(1,paymentInfo.getSupID());
+        pstm.setObject(2,paymentInfo.getOrderNo());
+        pstm.setObject(3,paymentInfo.getPaymentNo());
+        pstm.setObject(4,paymentInfo.getDate());
+        pstm.setObject(5,paymentInfo.getTotalAmount());
+        pstm.setObject(6,paymentInfo.getPayAmount());
+        pstm.setObject(7,paymentInfo.getDescription());
+
+        return pstm.executeUpdate() > 0;
     }
 }
