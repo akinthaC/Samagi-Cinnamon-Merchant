@@ -51,7 +51,7 @@ public class PaymentInfoFormController {
         getPaymentMethods();
         //getCurrentPaymentNo();
         lblOrderNo.setText(BuyFormController.orId);
-        lblTotalAmount.setText(String.valueOf(BuyFormController.totalAmount));
+        lblTotalAmount.setText(BuyFormController.totalAmount);
     }
 
     @FXML
