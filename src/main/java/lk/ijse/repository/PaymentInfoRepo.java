@@ -2,6 +2,7 @@ package lk.ijse.repository;
 
 
 import lk.ijse.Db.DbConnection;
+import lk.ijse.model.PaymentInfo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 public class PaymentInfoRepo {
 
     public static String getCurrentNo() throws SQLException {
-        String sql = "SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1";
+        String sql = "SELECT orderId FROM payment ORDER BY orderId DESC LIMIT 1";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
@@ -20,5 +21,10 @@ public class PaymentInfoRepo {
             return payId;
         }
         return null;
+    }
+
+    public static boolean save(PaymentInfo paymentInfo) {
+        String sql = "";
+        return false;
     }
 }
