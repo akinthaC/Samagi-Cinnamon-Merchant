@@ -19,6 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lk.ijse.model.tm.cartTm;
 import lk.ijse.repository.ItemRepo;
+import lk.ijse.repository.SupplierItemRepo;
 import lk.ijse.repository.SupplierRepo;
 
 import java.io.IOException;
@@ -78,15 +79,42 @@ public class BuyFormController {
     @FXML
     private AnchorPane buyPain;
 
+    static String orId;
+
     private ObservableList<cartTm> obList = FXCollections.observableArrayList();
 
-    public void initialize() throws IOException {
+    public void initialize() throws IOException, SQLException {
         comBoxContact.setEditable(true);
         comBoxName.setEditable(true);
         setCellValueFactory();
-
+        generateOrderId();
 
     }
+
+    private void generateOrderId(){
+        try {
+            String currentId = SupplierItemRepo.getCurrentId();
+            String nextOrderId = generateNextOrderId(currentId);
+            lblOrderNo.setText(nextOrderId);
+            orId = nextOrderId;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String generateNextOrderId(String currentId) {
+        if(currentId != null) {
+
+            String[] split = currentId.split("[oOrR]+");
+
+            int idNum = Integer.parseInt(split[1]);
+
+            return "OR" + String.format("%03d", ++idNum);
+        }
+
+        return "OR001";
+    }
+
 
     private void setCellValueFactory() {
         colProductType.setCellValueFactory(new PropertyValueFactory<>("type"));
