@@ -46,6 +46,7 @@ public class PaymentInfoFormController {
         getPaymentMethods();
         //getCurrentPaymentNo();
         //setOrderNo For The Payment Info page
+        lblOrderNo.setText(BuyFormController.orId);
     }
 
     @FXML
