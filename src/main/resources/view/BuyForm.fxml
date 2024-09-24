@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="buyPain" prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BuyFormController">
+<AnchorPane fx:id="buyPain" prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BuyFormController">
    <children>
       <JFXButton buttonType="RAISED" layoutX="144.0" layoutY="26.0" onAction="#btnOnActionCinnamon" prefHeight="76.0" prefWidth="187.0" style="-fx-background-color: #f1c40f;" text="Cinnamon">
          <font>
@@ -19,7 +23,7 @@
          </font>
       </JFXButton>
       <AnchorPane fx:id="paneType" layoutX="56.0" layoutY="133.0" prefHeight="559.0" prefWidth="545.0" style="-fx-background-color: #f7f1e3;" />
-      <Line endX="-100.0" endY="670.2000732421875" fill="BLACK" layoutX="757.0" layoutY="38.0" opacity="0.26" startX="-100.0" startY="-23.399972915649414" strokeLineCap="BUTT" />
+      <Line endX="-100.0" endY="670.2000732421875" fill="BLACK" layoutX="735.0" layoutY="38.0" opacity="0.26" startX="-100.0" startY="-23.399972915649414" strokeLineCap="BUTT" />
       <Label layoutX="729.0" layoutY="107.0" prefHeight="26.0" prefWidth="116.0" text="Product type :-">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -82,34 +86,35 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="tblCart" layoutX="702.0" layoutY="403.0" prefHeight="200.0" prefWidth="830.0">
+      <TableView fx:id="tblCart" layoutX="663.0" layoutY="389.0" prefHeight="200.0" prefWidth="910.0">
         <columns>
-          <TableColumn fx:id="colProductType" prefWidth="172.800048828125" text="Product type" />
-          <TableColumn fx:id="colWeight" prefWidth="165.5999755859375" text="Weight (Kg.)" />
-            <TableColumn fx:id="colBuyingPrice" prefWidth="175.199951171875" text="Buying Price (Rs.) " />
-            <TableColumn fx:id="colTotal" prefWidth="113.5999755859375" text="Total" />
-            <TableColumn fx:id="colCuttingAmount" prefWidth="127.199951171875" text="Cutting Amount (%)" />
-            <TableColumn fx:id="colStatus" prefWidth="76.800048828125" text="Active" />
+          <TableColumn fx:id="colProductType" prefWidth="128.0" text="Product type" />
+          <TableColumn fx:id="colWeight" prefWidth="140.79998779296875" text="Weight (Kg.)" />
+            <TableColumn fx:id="colNetWeight" prefWidth="104.7999267578125" text="netWeight (Kg.)" />
+            <TableColumn fx:id="colCuttingAmount" prefWidth="124.800048828125" text="Cutting Amount (%)" />
+            <TableColumn fx:id="colTotal" prefWidth="145.5999755859375" text="Total" />
+            <TableColumn fx:id="colBuyingPrice" prefWidth="171.2000732421875" text="Buying Price (Rs.) " />
+            <TableColumn fx:id="colStatus" prefWidth="92.79990234374998" text="Active" />
         </columns>
       </TableView>
-      <Label layoutX="728.0" layoutY="622.0" prefHeight="36.0" prefWidth="80.0" text="Total">
+      <Label layoutX="728.0" layoutY="589.0" prefHeight="36.0" prefWidth="80.0" text="Total">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="729.0" layoutY="657.0" prefHeight="36.0" prefWidth="158.0" text="Amount (Rs.)">
+      <Label layoutX="729.0" layoutY="624.0" prefHeight="36.0" prefWidth="158.0" text="Amount (Rs.)">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="893.0" layoutY="622.0" prefHeight="74.0" prefWidth="26.0" text=":-">
+      <Label layoutX="893.0" layoutY="589.0" prefHeight="74.0" prefWidth="26.0" text=":-">
          <font>
-            <Font size="50.0" />
+            <Font size="41.0" />
          </font>
       </Label>
-      <Label fx:id="lblNetWeight" layoutX="938.0" layoutY="623.0" prefHeight="74.0" prefWidth="253.0" text="0" textFill="#0000c4">
+      <Label fx:id="lblTotalAmount" layoutX="938.0" layoutY="589.0" prefHeight="74.0" prefWidth="290.0" text="0" textFill="#0000c4">
          <font>
-            <Font name="System Bold" size="50.0" />
+            <Font name="System Bold" size="41.0" />
          </font>
       </Label>
       <JFXButton buttonType="RAISED" layoutX="1300.0" layoutY="641.0" onAction="#btnOnActionPlaceOrder" prefHeight="57.0" prefWidth="211.0" ripplerFill="#009e05" style="-fx-background-color: #009e05;" text="Place Order" textFill="WHITE">
@@ -125,6 +130,27 @@
       <Label fx:id="lblOrderNo" layoutX="835.0" layoutY="40.0" prefHeight="26.0" prefWidth="254.0" text=" -" textFill="#00ae2f">
          <font>
             <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="729.0" layoutY="662.0" prefHeight="36.0" prefWidth="80.0" text="Total">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="730.0" layoutY="686.0" prefHeight="36.0" prefWidth="158.0" text="Weight (Kg.)">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="895.0" layoutY="675.0" prefHeight="38.0" prefWidth="26.0" text=":-">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="420.4000244140625" layoutX="830.0" layoutY="665.0" opacity="0.53" startX="-100.0" />
+      <Label fx:id="lblNetWeight" layoutX="937.0" layoutY="678.0" prefHeight="26.0" prefWidth="290.0" text="0" textFill="#0000c4">
+         <font>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
    </children>

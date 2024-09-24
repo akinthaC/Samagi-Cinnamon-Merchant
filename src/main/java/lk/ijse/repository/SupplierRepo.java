@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SupplierRepo {
     public static List<String> searchSupplierNmae() throws SQLException {
-        String sql = "SELECT name  FROM supplier";
+        String sql = "SELECT name  FROM supplier WHERE deletes = 'Active'";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
@@ -48,7 +48,7 @@ public class SupplierRepo {
     }
 
     public static List<String> SuplierSearchByContact(String contact) throws SQLException {
-        String sql = "SELECT * FROM supplier WHERE phonenumber = ?";
+        String sql = "SELECT * FROM supplier WHERE contact = ?";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class SupplierRepo {
     }
 
     public static List<String> searchSupplierContact() throws SQLException {
-        String sql = "SELECT phonenumber  FROM supplier";
+        String sql = "SELECT contact FROM supplier WHERE deletes = 'Active'";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
@@ -83,5 +83,33 @@ public class SupplierRepo {
             idList.add(contact);
         }
         return idList;
+    }
+
+    public static boolean saveSupplierTemp(String name, String contact) throws SQLException {
+        String sql = "INSERT INTO supplier(name,contact) VALUES(?,?)";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1,name);
+        pstm.setObject(2,contact);
+
+        return pstm.executeUpdate() > 0;
+    }
+
+    public static String searchSupplierId(String contact) throws SQLException {
+        String sql = "SELECT supplierId FROM supplier WHERE contact = ?";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1, contact);
+
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            String id = resultSet.getString(1);
+
+            return id;
+        }
+        return null;
     }
 }

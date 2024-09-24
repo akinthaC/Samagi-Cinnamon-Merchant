@@ -17,13 +17,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.KeyEvent;
 
 import javafx.stage.Stage;
+import lk.ijse.model.PlaceOrderSupplier;
+import lk.ijse.model.Supplier;
+import lk.ijse.model.SupplierItem;
 import lk.ijse.model.tm.cartTm;
 import lk.ijse.repository.ItemRepo;
+import lk.ijse.repository.PlaceOrderSupplierRepo;
 import lk.ijse.repository.SupplierItemRepo;
 import lk.ijse.repository.SupplierRepo;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +55,9 @@ public class BuyFormController {
     private TableColumn<?, ?> colWeight;
 
     @FXML
+    private TableColumn<?, ?> colNetWeight;
+
+    @FXML
     private JFXComboBox<String> comBoxContact;
 
     @FXML
@@ -55,6 +65,10 @@ public class BuyFormController {
 
     @FXML
     private Label lblOrderNo;
+
+
+    @FXML
+    private Label lblTotalAmount;
 
     @FXML
     private Label lblNetWeight;
@@ -103,22 +117,24 @@ public class BuyFormController {
     }
 
     private String generateNextOrderId(String currentId) {
-        if(currentId != null) {
+        if (currentId != null) {
 
-            String[] split = currentId.split("[oOrR]+");
+            // Use a regular expression to extract the numeric part
+            String numericPart = currentId.replaceAll("\\D+", ""); // Remove non-digit characters
 
-            int idNum = Integer.parseInt(split[1]);
+            int idNum = Integer.parseInt(numericPart);
 
-            return "OR" + String.format("%03d", ++idNum);
+            return String.format("%03d", ++idNum); // Increment and format to three digits
         }
 
-        return "OR001";
+        return "0001";
     }
 
 
-    private void setCellValueFactory() {
+        private void setCellValueFactory() {
         colProductType.setCellValueFactory(new PropertyValueFactory<>("type"));
         colWeight.setCellValueFactory(new PropertyValueFactory<>("weight"));
+        colNetWeight.setCellValueFactory(new PropertyValueFactory<>("netWeight"));
         colBuyingPrice.setCellValueFactory(new PropertyValueFactory<>("buyPrice"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         colCuttingAmount.setCellValueFactory(new PropertyValueFactory<>("cuttingAmount"));
@@ -173,7 +189,7 @@ public class BuyFormController {
             }
         }
 
-        cartTm cartTm = new cartTm(ProductType,Weight,BuyingPrice,buyTotal,CuttingAmount,btnRemove);
+        cartTm cartTm = new cartTm(ProductType,Weight,netWeight,BuyingPrice,buyTotal,CuttingAmount,btnRemove);
         obList.add(cartTm);
 
         tblCart.setItems(obList);
@@ -195,7 +211,7 @@ public class BuyFormController {
         for (int i = 0; i < tblCart.getItems().size(); i++) {
             netTotal += (double) colTotal.getCellData(i);
         }
-        lblNetWeight.setText(String.valueOf(netTotal));
+        lblTotalAmount.setText(String.valueOf(netTotal));
     }
 
     @FXML
@@ -358,29 +374,74 @@ public class BuyFormController {
     }
 
     @FXML
-    void btnOnActionPlaceOrder(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyForm.fxml"));
-        AnchorPane contentPane = loader.load();
+    void btnOnActionPlaceOrder(ActionEvent event) throws IOException, SQLException {
+        List<String> stringList = new ArrayList<>();
+        List<SupplierItem> odList = new ArrayList<>();
+        List  odList1 = new ArrayList<>();
+        List sup = new ArrayList<>();
 
-        // Add the loaded content to the main pane
-        buyPain.getChildren().clear();
-        buyPain.getChildren().add(contentPane);
-        
-        openPaymentInfo();
+
+        String SupId = SupplierRepo.searchSupplierId(comBoxContact.getValue());
+
+        String name;
+        String contact;
+            if (SupId== null) {
+                name = comBoxName.getValue();
+                contact = comBoxContact.getValue();
+                sup.add(name);
+                sup.add(contact);
+            }
+
+
+
+
+
+            for (int i = 0; i < tblCart.getItems().size(); i++) {
+                cartTm tm = obList.get(i);
+
+                String productId = ItemRepo.getId(tm.getType());
+                System.out.println(productId + tm.getType());
+                String orId = lblOrderNo.getText();
+                Double price = tm.getBuyPrice();
+                Date date = Date.valueOf(LocalDate.now());
+                double weight = tm.getWeight();
+                double netWeight = tm.getNetWeight();
+
+                SupplierItem supplierItem = new SupplierItem(SupId, productId , price, weight, date, netWeight,orId);
+                odList.add(supplierItem);
+
+                odList1.add(productId);
+                odList1.add(tm.getType());
+
+            }
+            try {
+
+                PlaceOrderSupplier placeOrderSupplier = new PlaceOrderSupplier(odList, odList1,sup);
+                boolean isPlaced = PlaceOrderSupplierRepo.orderSupplier(placeOrderSupplier,comBoxContact.getValue());
+                if (isPlaced) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyForm.fxml"));
+                    AnchorPane contentPane = loader.load();
+
+                    // Add the loaded content to the main pane
+                    buyPain.getChildren().clear();
+                    buyPain.getChildren().add(contentPane);
+
+
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
+                }
+
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
 
     }
 
-    private void openPaymentInfo() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PaymentInfoForm.fxml"));
-        Parent rootNode = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(rootNode));
-        stage.centerOnScreen();
-        stage.setTitle("AddPayment Form");
-
-        stage.show();
-    }
 
 
     @FXML
