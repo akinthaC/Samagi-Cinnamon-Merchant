@@ -15,6 +15,9 @@ public class PaymentInfo {
     private String date;
     private double totalAmount;
     private double payAmount;
+    private double toBePaAmount;
     private String description;
-    /*private String status;*/
+    private String paymentType;
+    private String status;
+
 }
