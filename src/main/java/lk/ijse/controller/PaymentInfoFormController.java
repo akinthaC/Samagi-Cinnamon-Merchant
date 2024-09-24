@@ -63,10 +63,18 @@ public class PaymentInfoFormController {
         double totalAmount = Double.parseDouble(lblTotalAmount.getText());
         double payAmount = Double.parseDouble(txtPayAmount.getText());
         String description = txtAreaDescription.getText();
+        String paymentType = comBoxType.getSelectionModel().getSelectedItem();
 
         if (payAmount <= totalAmount & payAmount > 0){
 
-            PaymentInfo paymentInfo = new PaymentInfo(supID, orderNo, paymentNo, date, totalAmount, payAmount, description);
+            double toBePaAmount = totalAmount - payAmount;
+
+            String status = "active";
+            if (toBePaAmount==0){
+                status.equals("inactive");
+            }
+
+            PaymentInfo paymentInfo = new PaymentInfo(supID, orderNo, paymentNo, date, totalAmount, payAmount, toBePaAmount, description, paymentType, status);
 
             try {
                 boolean isSaved = PaymentInfoRepo.save(paymentInfo);
