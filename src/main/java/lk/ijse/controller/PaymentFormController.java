@@ -122,20 +122,8 @@ public class PaymentFormController {
     }
 
     @FXML
-
     void btnOnActionDelete(ActionEvent event) {
 
-    void btnOnActionPendingPayments(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PendingPayments.fxml"));
-        Parent rootNode = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(rootNode));
-        stage.centerOnScreen();
-        stage.setTitle("AddPayment Form");
-
-
-        stage.show();
     }
 
     @FXML
