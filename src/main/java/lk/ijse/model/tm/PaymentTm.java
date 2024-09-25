@@ -9,12 +9,14 @@ import lombok.ToString;
 @NoArgsConstructor@AllArgsConstructor
 @ToString
 public class PaymentTm {
-    private String id;
-    private String ordid;
-    private String date ;
-    private double total;
-    private double advance;
-    private String type;
-    private double amountToPaid;
+    private String supID;
+    private String orderNo;
+    private String paymentNo;
+    private String date;
+    private double totalAmount;
+    private double payAmount;
+    private double toBePaAmount;
+    private String description;
+    private String paymentType;
     private String status;
 }
