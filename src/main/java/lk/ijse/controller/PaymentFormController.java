@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.model.PaymentInfo;
@@ -21,6 +22,9 @@ import lk.ijse.repository.PaymentRepo;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class PaymentFormController {
 
@@ -118,8 +122,20 @@ public class PaymentFormController {
     }
 
     @FXML
+
     void btnOnActionDelete(ActionEvent event) {
 
+    void btnOnActionPendingPayments(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PendingPayments.fxml"));
+        Parent rootNode = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootNode));
+        stage.centerOnScreen();
+        stage.setTitle("AddPayment Form");
+
+
+        stage.show();
     }
 
     @FXML
