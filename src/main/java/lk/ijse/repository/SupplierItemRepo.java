@@ -2,9 +2,7 @@ package lk.ijse.repository;
 
 import lk.ijse.Db.DbConnection;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class SupplierItemRepo {
     public static String getCurrentId() throws SQLException {
@@ -19,5 +17,25 @@ public class SupplierItemRepo {
             return ordId;
         }
         return null;
+    }
+
+
+    public static boolean save(String supId, String itemId, double price, double weight, Date date, double netWeight, String id) throws SQLException {
+        String sql = "INSERT INTO supplierItem VALUES(?,?,?,?,?,?,?)";
+
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setObject(1,supId);
+        pstm.setObject(2, itemId);
+        pstm.setObject(3, price);
+        pstm.setObject(4, weight);
+        pstm.setObject(5, date);
+        pstm.setObject(6, netWeight);
+        pstm.setObject(7, id);
+
+
+        return pstm.executeUpdate() > 0;
     }
 }

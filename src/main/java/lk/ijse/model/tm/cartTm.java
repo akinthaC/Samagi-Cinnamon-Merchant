@@ -13,6 +13,7 @@ import java.sql.Date;
 public class cartTm {
     private String type;
     private double weight;
+    private double netWeight;
     private double buyPrice;
     private double total;
     private double cuttingAmount;
