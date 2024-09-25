@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.KeyEvent;
 
 import javafx.stage.Stage;
+import lk.ijse.Db.DbConnection;
 import lk.ijse.model.PlaceOrderSupplier;
 import lk.ijse.model.Supplier;
 import lk.ijse.model.SupplierItem;
@@ -25,14 +26,16 @@ import lk.ijse.repository.ItemRepo;
 import lk.ijse.repository.PlaceOrderSupplierRepo;
 import lk.ijse.repository.SupplierItemRepo;
 import lk.ijse.repository.SupplierRepo;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class BuyFormController {
 
@@ -426,6 +429,7 @@ public class BuyFormController {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
                     
                     paymentInfo();
+                    /*PrintBill();*/
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyForm.fxml"));
                     AnchorPane contentPane = loader.load();
@@ -446,6 +450,22 @@ public class BuyFormController {
 
 
     }
+
+  /*  private void PrintBill() throws JRException {
+        JasperDesign jasperDesign = JRXmlLoader.load("report/SupBill.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("customerId",cmbCusId.getValue());
+        data.put("Net Total",lblNetTotal.getText());
+        data.put("OrderId",txtId.getText());
+        data.put("Date",txtDate.getText());
+        data.put("Time",lblTime.getText());
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
+    }*/
 
     private void paymentInfo() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PaymentInfoForm.fxml"));
