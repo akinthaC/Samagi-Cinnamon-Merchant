@@ -212,7 +212,7 @@ public class BuyFormController {
         for (int i = 0; i < tblCart.getItems().size(); i++) {
             netTotal += (double) colTotal.getCellData(i);
         }
-        lblTotalAmount.setText(String.valueOf(netTotal));
+         lblTotalAmount.setText(String.valueOf(netTotal));
 
         lblNetWeight.setText(String.valueOf(netTotal));
         totalAmount = String.valueOf(netTotal);
@@ -377,7 +377,7 @@ public class BuyFormController {
     void btnOnActionPlaceOrder(ActionEvent event) throws IOException, SQLException {
         List<String> stringList = new ArrayList<>();
         List<SupplierItem> odList = new ArrayList<>();
-        List  odList1 = new ArrayList<>();
+        List odList1 = new ArrayList<>();
         List sup = new ArrayList<>();
 
 
@@ -385,15 +385,19 @@ public class BuyFormController {
 
         String name;
         String contact;
-            if (SupId== null) {
-                name = comBoxName.getValue();
-                contact = comBoxContact.getValue();
-                sup.add(name);
-                sup.add(contact);
-            }
+        boolean isFlag;
+        if (SupId == null) {
+            name = comBoxName.getValue();
+            contact = comBoxContact.getValue();
+            sup.add(name);
+            sup.add(contact);
+            isFlag = true;
+            System.out.println(isFlag);
+        } else{
 
-
-
+            isFlag = false;
+        System.out.println(isFlag);
+    }
 
 
             for (int i = 0; i < tblCart.getItems().size(); i++) {
@@ -417,10 +421,11 @@ public class BuyFormController {
             try {
 
                 PlaceOrderSupplier placeOrderSupplier = new PlaceOrderSupplier(odList, odList1,sup);
-                boolean isPlaced = PlaceOrderSupplierRepo.orderSupplier(placeOrderSupplier,comBoxContact.getValue());
+                boolean isPlaced = PlaceOrderSupplierRepo.orderSupplier(placeOrderSupplier,comBoxContact.getValue(),comBoxName.getValue(),isFlag);
                 if (isPlaced) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
-
+                    
+                    paymentInfo();
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyForm.fxml"));
                     AnchorPane contentPane = loader.load();
@@ -442,6 +447,17 @@ public class BuyFormController {
 
     }
 
+    private void paymentInfo() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PaymentInfoForm.fxml"));
+        Parent rootNode = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootNode));
+        stage.centerOnScreen();
+        stage.setTitle("AddPayment Form");
+
+        stage.show();
+    }
 
 
     @FXML
