@@ -9,11 +9,15 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class PaymentInfo {
+    private String supID;
     private String orderNo;
     private String paymentNo;
     private String date;
-    private String totalAmount;
+    private double totalAmount;
     private double payAmount;
+    private double toBePaAmount;
     private String description;
-    /*private String status;*/
+    private String paymentType;
+    private String status;
+
 }

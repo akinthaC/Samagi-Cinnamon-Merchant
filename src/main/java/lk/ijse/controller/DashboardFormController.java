@@ -84,8 +84,8 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnOnActionPayment(ActionEvent event) {
-
+    void btnOnActionPayment(ActionEvent event) throws IOException {
+        loadFormWithAtractiveAnimation("/view/PaymentForm.fxml");
     }
     @FXML
     void btnOnActionBuy(ActionEvent event) throws IOException {

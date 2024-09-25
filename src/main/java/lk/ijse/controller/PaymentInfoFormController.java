@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.google.protobuf.StringValue;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,10 +11,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.Db.DbConnection;
 import lk.ijse.model.PaymentInfo;
 import lk.ijse.repository.OrdersRepo;
 import lk.ijse.repository.PaymentInfoRepo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -45,31 +50,59 @@ public class PaymentInfoFormController {
         lblDate.setText(String.valueOf(LocalDate.now()));
         getPaymentMethods();
         //getCurrentPaymentNo();
-        //setOrderNo For The Payment Info page
         lblOrderNo.setText(BuyFormController.orId);
+        lblTotalAmount.setText(BuyFormController.totalAmount);
     }
 
     @FXML
-    void btnOnActionPayNow(ActionEvent event) {
+    void btnOnActionPayNow(ActionEvent event) throws SQLException {
         String orderNo = lblOrderNo.getText();
+        String supID = getSupplierId(lblOrderNo);
         String paymentNo = lblPaymentNo.getText();
         String date = lblDate.getText();
-        String totalAmount = lblTotalAmount.getText();
+        double totalAmount = Double.parseDouble(lblTotalAmount.getText());
         double payAmount = Double.parseDouble(txtPayAmount.getText());
         String description = txtAreaDescription.getText();
+        String paymentType = comBoxType.getSelectionModel().getSelectedItem();
 
-        PaymentInfo paymentInfo = new PaymentInfo(orderNo, paymentNo, date, totalAmount, payAmount, description);
+        if (payAmount <= totalAmount & payAmount > 0){
 
-        try {
-            boolean isSaved = PaymentInfoRepo.save(paymentInfo);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION, "Payment info updated successfully").show();
-            }else {
-                new Alert(Alert.AlertType.ERROR, "Payment info update failed").show();
+            double toBePaAmount = totalAmount - payAmount;
+
+            String status = "active";
+            if (toBePaAmount==0){
+                status.equals("inactive");
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+            PaymentInfo paymentInfo = new PaymentInfo(supID, orderNo, paymentNo, date, totalAmount, payAmount, toBePaAmount, description, paymentType, status);
+
+            try {
+                boolean isSaved = PaymentInfoRepo.save(paymentInfo);
+                if (isSaved){
+                    new Alert(Alert.AlertType.INFORMATION, "Payment info updated successfully").show();
+                }else {
+                    new Alert(Alert.AlertType.ERROR, "Payment info update failed").show();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }else {
+            new Alert(Alert.AlertType.ERROR, "please check the Pay amount and Total amounts").show();
         }
+
+
+    }
+
+    private String getSupplierId(Label lblOrderNo) throws SQLException {
+        String sql = "select id from supplierItem where orderNo = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setString(1, lblOrderNo.getText());
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
     }
 
 
