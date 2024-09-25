@@ -9,15 +9,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class PlaceOrderSupplierRepo {
-    public static boolean orderSupplier(PlaceOrderSupplier placeOrderSupplier, String contact) throws SQLException {
+    public static boolean orderSupplier(PlaceOrderSupplier placeOrderSupplier, String contact, String name1, boolean isFlag) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         connection.setAutoCommit(false);
         try {
             boolean ifSave = true;
-        if (placeOrderSupplier.getSup()!=null) {
+
+        if (isFlag) {
             System.out.println("empty");
-            String id = (String) placeOrderSupplier.getSup().get(0);
-            ifSave= SupplierRepo.saveSupplierTemp(id, contact);
+            ifSave= SupplierRepo.saveSupplierTemp(name1, contact);
 
         }
             System.out.println("noempty");
@@ -25,7 +25,7 @@ public class PlaceOrderSupplierRepo {
                 String SupId = SupplierRepo.searchSupplierId(contact);
                 boolean isSupItemSave = false;
                 for (SupplierItem od : placeOrderSupplier.getOdlist()) {
-                    System.out.println(od.getItemId() +"  "+ od.getWeight());
+                    System.out.println(od.getItemId() + "  " + od.getWeight());
                     isSupItemSave = SupplierItemRepo.save(SupId, od.getItemId(), od.getPrice(), od.getWeight(), od.getDate(), od.getNetWeight(), od.getId());
                 }
 
@@ -35,7 +35,7 @@ public class PlaceOrderSupplierRepo {
                     for (SupplierItem od1 : placeOrderSupplier.getOdlist()) {
                         double onHandWeight = ItemRepo.getWeight(od1.getItemId());
 
-                        System.out.println(od1.getItemId() +"  "+ od1.getWeight());
+                        System.out.println(od1.getItemId() + "  " + od1.getWeight());
                         isupdateItem = ItemRepo.upateWeight(od1.getItemId(), od1.getWeight());
 
 
