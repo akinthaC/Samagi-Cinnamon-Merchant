@@ -95,6 +95,7 @@ public class BuyFormController {
 
     static String orId;
     static String totalAmount;
+    static String supplierID;
 
     private ObservableList<cartTm> obList = FXCollections.observableArrayList();
 
@@ -129,6 +130,7 @@ public class BuyFormController {
         }
 
         return "0001";
+
     }
 
 
@@ -382,6 +384,7 @@ public class BuyFormController {
 
 
         String SupId = SupplierRepo.searchSupplierId(comBoxContact.getValue());
+        supplierID = SupId;
 
         String name;
         String contact;

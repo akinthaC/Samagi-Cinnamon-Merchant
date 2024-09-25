@@ -89,7 +89,7 @@ public class PaymentFormController {
 
     private void setCellValueFactory() {
         colSupId.setCellValueFactory(new PropertyValueFactory<>("supID"));
-        colOrderNo.setCellValueFactory(new PropertyValueFactory<>("orderNo"));
+        colOrderNo.setCellValueFactory(new PropertyValueFactory<>("orderNo")); //wdk n
         colPaymentNo.setCellValueFactory(new PropertyValueFactory<>("paymentNo"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colTotalAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
@@ -107,10 +107,9 @@ public class PaymentFormController {
         for ( PaymentInfo pay: PaymentList){
             obList.add(new PaymentTm(
                     pay.getPaymentNo(),
-                    pay.getOrderNo(),
                     pay.getSupID(),
-                    pay.getDate(),
                     pay.getTotalAmount(),
+                    pay.getDate(),
                     pay.getPayAmount(), //Advance
                     pay.getToBePaAmount(),
                     pay.getPaymentType(),
