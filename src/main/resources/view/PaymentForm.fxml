@@ -12,17 +12,18 @@
 
 <AnchorPane prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PaymentFormController">
    <children>
-      <TableView fx:id="tblPayment" layoutX="121.0" layoutY="65.0" prefHeight="266.0" prefWidth="1290.0">
+      <TableView fx:id="tblPayment" layoutX="121.0" layoutY="65.0" prefHeight="266.0" prefWidth="1288.0">
         <columns>
-          <TableColumn fx:id="colPaymentNo" prefWidth="91.99996566772461" text="Payment No." />
-          <TableColumn fx:id="colDate" prefWidth="119.19999694824219" text="Date" />
-            <TableColumn fx:id="colTotalAmount" prefWidth="178.39996337890625" text="Total Amount (Rs.)" />
-            <TableColumn fx:id="colAdvance" prefWidth="169.5999755859375" text="Advance" />
-            <TableColumn fx:id="colAmountToBePay" prefWidth="184.79998779296875" text="Amount to Be pay" />
-            <TableColumn fx:id="colPaymentType" prefWidth="112.800048828125" text="Payment Type" />
-            <TableColumn fx:id="colOrderNo" prefWidth="126.39990234375" text="Order No." />
-            <TableColumn fx:id="colDescription" prefWidth="192.79998779296875" text="Description" />
-            <TableColumn fx:id="colStatus" prefWidth="117.5999755859375" text="Now Status" />
+          <TableColumn fx:id="colPaymentNo" prefWidth="79.20001220703125" text="Payment No." />
+            <TableColumn fx:id="colSupId" prefWidth="81.60002136230469" text="SupID" />
+          <TableColumn fx:id="colDate" prefWidth="108.800048828125" text="Date" />
+            <TableColumn fx:id="colTotalAmount" prefWidth="184.00006103515625" text="Total Amount (Rs.)" />
+            <TableColumn fx:id="colAdvance" prefWidth="180.7999267578125" text="Advance" />
+            <TableColumn fx:id="colAmountToBePay" prefWidth="184.0" text="Amount to Be pay" />
+            <TableColumn fx:id="colPaymentType" prefWidth="103.99993896484375" text="Payment Type" />
+            <TableColumn fx:id="colOrderNo" prefWidth="82.400146484375" text="Order No." />
+            <TableColumn fx:id="colDescription" prefWidth="206.39990234375" text="Description" />
+            <TableColumn fx:id="colStatus" prefWidth="73.5999755859375" text="Now Status" />
         </columns>
       </TableView>
       <Label layoutX="554.0" layoutY="380.0" prefHeight="26.0" prefWidth="94.0" text="Order No. :-">
