@@ -46,18 +46,21 @@ public class PaymentInfoFormController {
     @FXML
     private TextField txtPayAmount;
 
+    String supID;
+
     public void initialize() {
+        supID = BuyFormController.supplierID;
         lblDate.setText(String.valueOf(LocalDate.now()));
         getPaymentMethods();
-        //getCurrentPaymentNo();
+        getCurrentPaymentNo();
         lblOrderNo.setText(BuyFormController.orId);
         lblTotalAmount.setText(BuyFormController.totalAmount);
+
     }
 
     @FXML
     void btnOnActionPayNow(ActionEvent event) throws SQLException {
-        String orderNo = lblOrderNo.getText();
-        String supID = getSupplierId(lblOrderNo);
+        /*String orderNo = lblOrderNo.getText();*/
         String paymentNo = lblPaymentNo.getText();
         String date = lblDate.getText();
         double totalAmount = Double.parseDouble(lblTotalAmount.getText());
@@ -69,17 +72,17 @@ public class PaymentInfoFormController {
 
             double toBePaAmount = totalAmount - payAmount;
 
-            String status = "active";
-            if (toBePaAmount==0){
-                status.equals("inactive");
+            String status = "Active";
+            if (toBePaAmount==0.00){
+                status.equals("Inactive");
             }
-
-            PaymentInfo paymentInfo = new PaymentInfo(supID, orderNo, paymentNo, date, totalAmount, payAmount, toBePaAmount, description, paymentType, status);
+            PaymentInfo paymentInfo = new PaymentInfo( paymentNo,supID, totalAmount, date, payAmount, toBePaAmount, paymentType,description, status);
 
             try {
                 boolean isSaved = PaymentInfoRepo.save(paymentInfo);
                 if (isSaved){
                     new Alert(Alert.AlertType.INFORMATION, "Payment info updated successfully").show();
+                    clearFields();
                 }else {
                     new Alert(Alert.AlertType.ERROR, "Payment info update failed").show();
                 }
@@ -90,28 +93,20 @@ public class PaymentInfoFormController {
             new Alert(Alert.AlertType.ERROR, "please check the Pay amount and Total amounts").show();
         }
 
-
     }
 
-    private String getSupplierId(Label lblOrderNo) throws SQLException {
-        String sql = "select id from supplierItem where orderNo = ?";
-        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setString(1, lblOrderNo.getText());
-        ResultSet resultSet = pstm.executeQuery();
-
-        if (resultSet.next()){
-            return resultSet.getString(1);
-        }
-        return null;
+    private void clearFields() {
+        txtPayAmount.clear();
+        txtAreaDescription.clear();
+        comBoxType.getItems().clear();
     }
 
 
     private void getCurrentPaymentNo() {
         try {
             String currentNo = PaymentInfoRepo.getCurrentNo();
-
             String nextPayNo = generateNextPaymentNo(currentNo);
-            lblPaymentNo.setText(nextPayNo);
+            lblPaymentNo.setText(nextPayNo); //set paymentNo
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -120,17 +115,17 @@ public class PaymentInfoFormController {
 
     private String generateNextPaymentNo(String currentNo) {
 
-        if(currentNo != null) {
+        if (currentNo != null) {
 
-            String[] split = currentNo.split("[oO]");
+            // Use a regular expression to extract the numeric part
+            String numericPart = currentNo.replaceAll("\\D+", ""); // Remove non-digit characters
 
-            int idNum = Integer.parseInt(split[1]);
+            int idNum = Integer.parseInt(numericPart);
 
-            return "P" + String.format("%03d", ++idNum);
-
+            return String.format("%03d", ++idNum); // Increment and format to three digits
         }
 
-        return "P001";
+        return "0001";
     }
 
     private void getPaymentMethods() {

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentRepo {
+
     public static List<PaymentInfo> getAll() throws SQLException {
         Connection con = DbConnection.getInstance().getConnection();
         String sql = "SELECT * FROM payment";
@@ -19,16 +20,15 @@ public class PaymentRepo {
         ResultSet resultSet = con.createStatement().executeQuery(sql);
         while (resultSet.next()) {
             data.add(new PaymentInfo(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getDouble(5),
-                    resultSet.getDouble(6),
-                    resultSet.getDouble(7),
-                    resultSet.getString(8),
-                    resultSet.getString(9),
-                    resultSet.getString(10)
+                    resultSet.getString("paymentNo"),
+                    resultSet.getString("supplierId"),
+                    resultSet.getDouble("totalAmount"),
+                    resultSet.getString("date"),
+                    resultSet.getDouble("payAmount"),
+                    resultSet.getDouble("toBePaAmount"),
+                    resultSet.getString("paymentType"),
+                    resultSet.getString("description"),
+                    resultSet.getString("status")
             ));
         }
         return data;

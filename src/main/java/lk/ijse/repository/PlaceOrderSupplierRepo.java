@@ -55,8 +55,9 @@ public class PlaceOrderSupplierRepo {
         return false;
     } catch (SQLException e) {
             connection.rollback();
-            new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
-            return false;
+            /*new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();*/
+            throw new SQLException(e);
+
 
     } finally {
         connection.setAutoCommit(true);
