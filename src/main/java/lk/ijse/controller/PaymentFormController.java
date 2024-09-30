@@ -59,13 +59,10 @@ public class PaymentFormController {
     private TableColumn<?, ?> colTotalAmount;
 
     @FXML
-    private JFXComboBox<?> comBoxOrderNo;
+    private JFXComboBox<String> comBoxPaymentNo;
 
     @FXML
-    private JFXComboBox<?> comBoxPaymentNo;
-
-    @FXML
-    private JFXComboBox<?> comBoxType;
+    private JFXComboBox<String> comBoxType;
 
     @FXML
     private TableView<PaymentTm> tblPayment;
@@ -83,13 +80,41 @@ public class PaymentFormController {
     private TextField txtDate;
 
     public void initialize() throws SQLException {
+        comBoxPaymentNo.setEditable(true);
         getAllPayments();
         setCellValueFactory();
+        getPaymentNos();
+        getPaymentMethods();
+    }
+
+    private void getPaymentNos() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        try {
+            List<String> NoList = PaymentRepo.getPaymentIds();
+
+            for(String No : NoList) {
+                obList.add(No);
+            }
+
+            comBoxPaymentNo.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void getPaymentMethods() {
+        ObservableList<String> obList = FXCollections.observableArrayList(
+                "Cash",
+                "Credit Card",
+                "Cheque"
+        );
+
+        comBoxType.setItems(obList);
     }
 
     private void setCellValueFactory() {
-        colSupId.setCellValueFactory(new PropertyValueFactory<>("supID"));
-        colOrderNo.setCellValueFactory(new PropertyValueFactory<>("orderNo")); //wdk n
+        colSupId.setCellValueFactory(new PropertyValueFactory<>("supID"));//wdk n
         colPaymentNo.setCellValueFactory(new PropertyValueFactory<>("paymentNo"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colTotalAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));

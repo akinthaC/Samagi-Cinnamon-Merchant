@@ -15,22 +15,16 @@
       <TableView fx:id="tblPayment" layoutX="121.0" layoutY="65.0" prefHeight="266.0" prefWidth="1288.0">
         <columns>
           <TableColumn fx:id="colPaymentNo" prefWidth="79.20001220703125" text="Payment No." />
-            <TableColumn fx:id="colSupId" prefWidth="81.60002136230469" text="SupID" />
-          <TableColumn fx:id="colDate" prefWidth="108.800048828125" text="Date" />
-            <TableColumn fx:id="colTotalAmount" prefWidth="184.00006103515625" text="Total Amount (Rs.)" />
-            <TableColumn fx:id="colAdvance" prefWidth="180.7999267578125" text="Advance" />
+            <TableColumn fx:id="colSupId" prefWidth="94.40000915527344" text="SupID" />
+          <TableColumn fx:id="colDate" prefWidth="128.00006103515625" text="Date" />
+            <TableColumn fx:id="colTotalAmount" prefWidth="166.4000244140625" text="Total Amount (Rs.)" />
+            <TableColumn fx:id="colAdvance" prefWidth="168.800048828125" text="Advance" />
             <TableColumn fx:id="colAmountToBePay" prefWidth="184.0" text="Amount to Be pay" />
-            <TableColumn fx:id="colPaymentType" prefWidth="103.99993896484375" text="Payment Type" />
-            <TableColumn fx:id="colOrderNo" prefWidth="82.400146484375" text="Order No." />
-            <TableColumn fx:id="colDescription" prefWidth="206.39990234375" text="Description" />
-            <TableColumn fx:id="colStatus" prefWidth="73.5999755859375" text="Now Status" />
+            <TableColumn fx:id="colPaymentType" prefWidth="158.4000244140625" text="Payment Type" />
+            <TableColumn fx:id="colDescription" prefWidth="198.39990234375" text="Description" />
+            <TableColumn fx:id="colStatus" prefWidth="109.5999755859375" text="Now Status" />
         </columns>
       </TableView>
-      <Label layoutX="554.0" layoutY="380.0" prefHeight="26.0" prefWidth="94.0" text="Order No. :-">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
       <Label layoutX="122.0" layoutY="380.0" prefHeight="26.0" prefWidth="116.0" text="Payment No. :-">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -62,28 +56,27 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <JFXComboBox fx:id="comBoxOrderNo" layoutX="659.0" layoutY="380.0" prefHeight="26.0" prefWidth="116.0" />
       <TextField fx:id="txtDate" layoutX="182.0" layoutY="641.0" prefHeight="34.0" prefWidth="178.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Label layoutX="554.0" layoutY="450.0" prefHeight="26.0" prefWidth="108.0" text="Description :-">
+      <Label layoutX="554.0" layoutY="382.0" prefHeight="26.0" prefWidth="108.0" text="Description :-">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextArea fx:id="txtAreaDescription" layoutX="662.0" layoutY="449.0" prefHeight="71.0" prefWidth="306.0">
+      <TextArea fx:id="txtAreaDescription" layoutX="662.0" layoutY="381.0" prefHeight="71.0" prefWidth="306.0">
          <font>
             <Font size="13.0" />
          </font>
       </TextArea>
-      <Label layoutX="554.0" layoutY="554.0" prefHeight="26.0" prefWidth="129.0" text="Payment Type :-">
+      <Label layoutX="554.0" layoutY="486.0" prefHeight="26.0" prefWidth="129.0" text="Payment Type :-">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comBoxType" layoutX="686.0" layoutY="555.0" prefHeight="26.0" prefWidth="101.0" />
+      <JFXComboBox fx:id="comBoxType" layoutX="686.0" layoutY="487.0" prefHeight="26.0" prefWidth="101.0" />
       <JFXButton buttonType="RAISED" layoutX="554.0" layoutY="636.0" onAction="#btnOnActionUpdate" prefHeight="20.0" prefWidth="150.0" ripplerFill="#009e05" style="-fx-background-color: #009e05;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
