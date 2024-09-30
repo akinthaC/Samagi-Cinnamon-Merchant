@@ -14,6 +14,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lk.ijse.model.PaymentInfo;
 import lk.ijse.model.tm.PaymentTm;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import javafx.stage.Stage;
+import lk.ijse.repository.SupplierRepo;
 
 import java.io.IOException;
 
@@ -166,5 +169,36 @@ public class PaymentFormController {
         stage.setTitle("AddPayment Form");
 
         stage.show();
+    }
+
+
+    public void comBoxOnActionSearchPaymentNo(KeyEvent keyEvent) {
+        /*if (keyEvent.getCode() == KeyCode.ENTER) {
+            String selectedName = comBoxPaymentNo.getEditor().getText();
+
+            // Ensure there is a valid name entered in the ComboBox
+            if (selectedName != null && !selectedName.trim().isEmpty()) {
+                try {
+                    // Fetch the supplier details by name
+                    List<String> supplier = PaymentRepo.nameSearch(selectedName);
+
+                    if (supplier != null && supplier.size() > 1) {
+                        // Set the supplier details to ComboBoxes or other UI elements
+                        comBoxPaymentNo.setValue(supplier.get(1)); // Supplier contact
+                        comBoxName.setValue(supplier.get(0)); // Supplier name
+                    } else {
+                        if(comBoxContact.getValue()!=null){
+                            comBoxContact.setValue(null);
+                        }
+                        showSupplierNotFoundAlert();
+                    }
+
+                    // Trigger further actions based on the selected name
+                    comBoxOnActionSearchName(new ActionEvent());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }*/
     }
 }

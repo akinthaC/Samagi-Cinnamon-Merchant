@@ -13,6 +13,5 @@ public class SupplierTm {
     private String id;
     private String name;
     private String contact;
-    private String NIC;
     private String address;
 }
