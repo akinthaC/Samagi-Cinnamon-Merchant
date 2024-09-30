@@ -112,4 +112,44 @@ public class SupplierRepo {
         }
         return null;
     }
+
+    public static List<String> SupplierSearchByContactforPendinngPayments(String selectedContact) throws SQLException {
+        String sql = "SELECT * FROM supplier WHERE contact = ? ";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1, selectedContact);
+        List<String> stringList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            String id1 = resultSet.getString(1);
+            String name1 = resultSet.getString(2);
+            String address1 = resultSet.getString(3);
+            String contact1 = resultSet.getString(4);
+
+            stringList.add(id1);
+            stringList.add(name1);
+            stringList.add(address1);
+            stringList.add(contact1);
+
+            return stringList;
+        }
+
+        return null ;
+    }
+
+    public static String searchSupplierContactForPaymentInfo(String supID) throws SQLException {
+
+        String sql = "SELECT contact FROM supplier WHERE supplierId = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setObject(1, supID);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()) {
+            return resultSet.getString("contact");
+        }
+        return null;
+    }
 }

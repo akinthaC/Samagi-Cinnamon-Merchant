@@ -72,9 +72,9 @@ public class PaymentInfoFormController {
 
             double toBePaAmount = totalAmount - payAmount;
 
-            String status = "Active";
+            String status = "pending";
             if (toBePaAmount==0.00){
-                status.equals("Inactive");
+                status.equals("complete");
             }
             PaymentInfo paymentInfo = new PaymentInfo( paymentNo,supID, totalAmount, date, payAmount, toBePaAmount, paymentType,description, status);
 
