@@ -99,6 +99,7 @@ public class BuyFormController {
     static String orId;
     static String totalAmount;
     static String supplierID;
+    static String cusName;
 
     private ObservableList<cartTm> obList = FXCollections.observableArrayList();
 
@@ -395,6 +396,7 @@ public class BuyFormController {
         if (SupId == null) {
             name = comBoxName.getValue();
             contact = comBoxContact.getValue();
+            cusName=name;
             sup.add(name);
             sup.add(contact);
             isFlag = true;
@@ -429,7 +431,7 @@ public class BuyFormController {
                 PlaceOrderSupplier placeOrderSupplier = new PlaceOrderSupplier(odList, odList1,sup);
                 boolean isPlaced = PlaceOrderSupplierRepo.orderSupplier(placeOrderSupplier,comBoxContact.getValue(),comBoxName.getValue(),isFlag);
                 if (isPlaced) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+
                     
                     paymentInfo();
                     /*PrintBill();*/

@@ -8,6 +8,9 @@
     <parameter name="OrId" class="java.lang.String"/>
     <parameter name="CusName" class="java.lang.String"/>
     <parameter name="id" class="java.lang.String"/>
+    <parameter name="NetTotal" class="java.lang.String"/>
+    <parameter name="Advance" class="java.lang.String"/>
+    <parameter name="ToBePayPayment" class="java.lang.String"/>
     <queryString language="SQL">
         <![CDATA[SELECT i.itemName, si.price, si.weight, si.netWeight, ROUND(si.price *  si.netWeight, 2) AS total
 FROM supplierItem si
@@ -57,7 +60,7 @@ WHERE si.id = $P{id};]]>
         <band splitType="Stretch"/>
     </background>
     <title>
-        <band height="158" splitType="Stretch">
+        <band height="180" splitType="Stretch">
             <staticText>
                 <reportElement x="120" y="0" width="323" height="40" uuid="04e22485-23b9-4b6e-9285-51a8aeb51085"/>
                 <textElement textAlignment="Center">
@@ -75,21 +78,21 @@ WHERE si.id = $P{id};]]>
             <staticText>
                 <reportElement x="173" y="40" width="218" height="20" uuid="927a17b6-bf87-4a3a-8881-463b0b5d8755"/>
                 <textElement textAlignment="Center">
-                    <font fontName="Courier 10 Pitch" size="10"/>
+                    <font fontName="Microsoft Tai Le" size="10"/>
                 </textElement>
                 <text><![CDATA[Tel :- 0759040500, 0778356039]]></text>
             </staticText>
             <staticText>
                 <reportElement x="450" y="0" width="36" height="20" uuid="d4bf15bb-a098-41c3-bf71-ed150ac27253"/>
                 <textElement>
-                    <font fontName="C059" isBold="true"/>
+                    <font fontName="Microsoft Tai Le" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Date:]]></text>
             </staticText>
             <staticText>
                 <reportElement x="449" y="23" width="37" height="20" uuid="8de48ea6-050d-42ab-a7f8-a3ad354d403c"/>
                 <textElement>
-                    <font fontName="C059" isBold="true"/>
+                    <font fontName="Microsoft Tai Le" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Time:]]></text>
             </staticText>
@@ -122,7 +125,7 @@ WHERE si.id = $P{id};]]>
                 <textFieldExpression><![CDATA[$P{OrId}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="479" y="2" width="100" height="25" uuid="dbad88a9-3ac9-4f31-98eb-5004b84e13e3"/>
+                <reportElement x="479" y="0" width="100" height="25" uuid="dbad88a9-3ac9-4f31-98eb-5004b84e13e3"/>
                 <textElement>
                     <font isBold="true"/>
                 </textElement>
@@ -152,7 +155,7 @@ WHERE si.id = $P{id};]]>
         </band>
     </pageHeader>
     <columnHeader>
-        <band height="36" splitType="Stretch">
+        <band height="50" splitType="Stretch">
             <staticText>
                 <reportElement x="-9" y="-4" width="92" height="30" uuid="50a99ef1-0a66-4805-abcd-940cd59f6563">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b056436-86e5-4bfb-a1bc-e267111be6c4"/>
@@ -222,7 +225,7 @@ WHERE si.id = $P{id};]]>
         </band>
     </columnHeader>
     <detail>
-        <band height="37" splitType="Stretch">
+        <band height="49" splitType="Stretch">
             <textField>
                 <reportElement x="3" y="0" width="70" height="30" uuid="198880fe-ae3f-4148-ac2c-24229d17f814">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8c9c7651-42bb-424c-80c8-6cb4b40c68f0"/>
@@ -269,10 +272,52 @@ WHERE si.id = $P{id};]]>
                 </textElement>
                 <text><![CDATA[THANK YOU & COME AGAIN..]]></text>
             </staticText>
+            <staticText>
+                <reportElement x="391" y="-166" width="85" height="30" uuid="944ad1a3-84dd-4d84-9fbd-53648192d4fa"/>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Net Total :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="393" y="-136" width="85" height="30" uuid="6986498e-ca36-493f-89b8-3fe2a79361b2"/>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Advance:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="326" y="-105" width="155" height="30" uuid="75a10b9d-599d-4265-8767-5590ae6e3284"/>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[ToBE pay Amount:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="474" y="-168" width="158" height="29" uuid="fc64522a-aff9-41e2-815f-19bfa93d938d"/>
+                <textElement>
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{NetTotal}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="475" y="-136" width="131" height="26" uuid="9f0562b3-e741-4f56-b074-45a1499883d2"/>
+                <textElement>
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{Advance}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="477" y="-106" width="128" height="27" uuid="9db349dc-9b21-4e9c-91aa-6ad581fdb12c"/>
+                <textElement>
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ToBePayPayment}]]></textFieldExpression>
+            </textField>
         </band>
     </columnFooter>
     <pageFooter>
-        <band height="54" splitType="Stretch"/>
+        <band height="69" splitType="Stretch"/>
     </pageFooter>
     <summary>
         <band height="42" splitType="Stretch"/>
