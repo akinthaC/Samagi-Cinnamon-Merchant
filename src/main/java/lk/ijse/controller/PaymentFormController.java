@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
@@ -172,6 +169,87 @@ public class PaymentFormController {
     }
 
 
+    public void PaymentNoOnKeyPressed(KeyEvent keyEvent) {
+        /*System.out.println("aaaaaaaaaa");
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            String paymentNo = comBoxPaymentNo.getEditor().getText();
+            int index = -1;
+
+            // Ensure there is a valid name entered in the ComboBox
+            if (paymentNo != null && !paymentNo.trim().isEmpty()) {
+                for (int i = 0; i < tblPayment.getItems().size(); i++) {
+                    System.out.println(colPaymentNo.getCellData(i));
+                    if (colPaymentNo.getCellData(i) == comBoxPaymentNo.getValue()) {
+                        index = i;
+                        break;
+                    }
+                }
+
+            }
+
+            if(colPaymentNo.getCellData(index)==comBoxPaymentNo.getValue() ) {
+                System.out.println(colAdvance.getCellData(index));
+                txtAdvance.setText((String) colAdvance.getCellData(index));
+                txtAmountToBePay.setText((String) colAmountToBePay.getCellData(index));
+                txtAreaDescription.setText((String) colDescription.getCellData(index));
+                txtDate.setText((String) colDate.getCellData(index));
+            }else {
+                new Alert(Alert.AlertType.WARNING, "no found!").show();
+            }
+        }*/
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            String paymentNo = comBoxPaymentNo.getEditor().getText().trim();
+            int index = -1;
+
+            if (!paymentNo.isEmpty()) {
+                for (int i = 0; i < tblPayment.getItems().size(); i++) {
+                    String cellPaymentNo = (String) colPaymentNo.getCellData(i);
+                    System.out.println(cellPaymentNo);
+                    if (cellPaymentNo.equals(paymentNo)) {
+                        index = i;
+                        break;
+                    }
+                }
+            }
+
+            if (index != -1) {
+                System.out.println(colAdvance.getCellData(index));
+                txtAdvance.setText(String.valueOf(colAdvance.getCellData(index)));
+                txtAmountToBePay.setText(String.valueOf(colAmountToBePay.getCellData(index)));
+                txtAreaDescription.setText(String.valueOf(colDescription.getCellData(index)));
+                txtDate.setText(String.valueOf(colDate.getCellData(index)));
+                comBoxType.setValue((String) colPaymentType.getCellData(index));
+            } else {
+                new Alert(Alert.AlertType.WARNING, "No record found!").show();
+            }
+        }
+
+    }
+
+    public void PaymentNoOnKeyReleased(KeyEvent keyEvent) throws SQLException {
+        ObservableList<String> filterData = FXCollections.observableArrayList();
+        String enteredContact = comBoxPaymentNo.getEditor().getText();
+
+        List<String> stringList = PaymentRepo.getPaymentIds();
+
+        try {
+
+            for (String no : stringList) {
+                if (no.toLowerCase().contains(enteredContact.toLowerCase())) {
+                    filterData.add(no);
+                }
+            }
+
+
+            comBoxPaymentNo.setItems(filterData);
+            comBoxPaymentNo.show();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+
     public void comBoxOnActionSearchPaymentNo(KeyEvent keyEvent) {
         /*if (keyEvent.getCode() == KeyCode.ENTER) {
             String selectedName = comBoxPaymentNo.getEditor().getText();
@@ -200,5 +278,6 @@ public class PaymentFormController {
                 }
             }
         }*/
+
     }
 }

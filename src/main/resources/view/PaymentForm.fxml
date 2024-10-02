@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PaymentFormController">
+<AnchorPane prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PaymentFormController">
    <children>
       <TableView fx:id="tblPayment" layoutX="121.0" layoutY="65.0" prefHeight="266.0" prefWidth="1288.0">
         <columns>
@@ -30,7 +25,11 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+
+      <JFXComboBox fx:id="comBoxPaymentNo" layoutX="246.0" layoutY="379.0" onKeyPressed="#PaymentNoOnKeyPressed" onKeyReleased="#PaymentNoOnKeyReleased" prefHeight="26.0" prefWidth="116.0" />
+
       <JFXComboBox fx:id="comBoxPaymentNo" labelFloat="true" layoutX="246.0" layoutY="379.0" onKeyPressed="#comBoxOnActionSearchPaymentNo" prefHeight="26.0" prefWidth="162.0" promptText="Press Enter To Search" />
+
       <Label layoutX="124.0" layoutY="644.0" prefHeight="26.0" prefWidth="66.0" text="Date :-">
          <font>
             <Font name="System Bold" size="16.0" />
