@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class ItemFormController {
 
@@ -33,6 +34,19 @@ public class ItemFormController {
     @FXML
     private TextField txtOnHandWeight;
 
+    public void initialize() {
+        getAllItems();
+        setCellValueFactory();
+    }
+
+    private void setCellValueFactory() {
+
+    }
+
+    private void getAllItems() {
+
+    }
+
     @FXML
     void btnOnActionAddItem(ActionEvent event) {
 
@@ -48,4 +62,8 @@ public class ItemFormController {
 
     }
 
+    @FXML
+    public void OnMouseClicked(MouseEvent mouseEvent) {
+
+    }
 }

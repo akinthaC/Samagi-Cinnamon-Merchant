@@ -3,15 +3,15 @@ package lk.ijse.model.tm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Data
 public class SupplierTm {
     private String id;
     private String name;
     private String contact;
     private String address;
+    private String status;
 }
