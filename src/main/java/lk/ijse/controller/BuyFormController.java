@@ -385,6 +385,7 @@ public class BuyFormController {
         List<SupplierItem> odList = new ArrayList<>();
         List odList1 = new ArrayList<>();
         List sup = new ArrayList<>();
+        cusName=comBoxName.getValue();
 
 
         String SupId = SupplierRepo.searchSupplierId(comBoxContact.getValue());
@@ -396,7 +397,7 @@ public class BuyFormController {
         if (SupId == null) {
             name = comBoxName.getValue();
             contact = comBoxContact.getValue();
-            cusName=name;
+            cusName=comBoxName.getValue();
             sup.add(name);
             sup.add(contact);
             isFlag = true;

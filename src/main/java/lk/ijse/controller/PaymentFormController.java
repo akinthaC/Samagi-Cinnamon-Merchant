@@ -93,7 +93,7 @@ public class PaymentFormController {
         try {
             List<String> NoList = PaymentRepo.getPaymentIds();
 
-            for(String No : NoList) {
+            for (String No : NoList) {
                 obList.add(No);
             }
 
@@ -103,6 +103,7 @@ public class PaymentFormController {
             throw new RuntimeException(e);
         }
     }
+
     private void getPaymentMethods() {
         ObservableList<String> obList = FXCollections.observableArrayList(
                 "Cash",
@@ -129,7 +130,7 @@ public class PaymentFormController {
         ObservableList<PaymentTm> obList = FXCollections.observableArrayList();
         List<PaymentInfo> PaymentList = PaymentRepo.getAll();
 
-        for ( PaymentInfo pay: PaymentList){
+        for (PaymentInfo pay : PaymentList) {
             obList.add(new PaymentTm(
                     pay.getPaymentNo(),
                     pay.getSupID(),
@@ -170,7 +171,7 @@ public class PaymentFormController {
 
 
     public void PaymentNoOnKeyPressed(KeyEvent keyEvent) {
-        /*System.out.println("aaaaaaaaaa");
+        System.out.println("aaaaaaaaaa");
         if (keyEvent.getCode() == KeyCode.ENTER) {
             String paymentNo = comBoxPaymentNo.getEditor().getText();
             int index = -1;
@@ -194,9 +195,9 @@ public class PaymentFormController {
                 txtAreaDescription.setText((String) colDescription.getCellData(index));
                 txtDate.setText((String) colDate.getCellData(index));
             }else {
-                new Alert(Alert.AlertType.WARNING, "no found!").show();
+
             }
-        }*/
+        }
 
         if (keyEvent.getCode() == KeyCode.ENTER) {
             String paymentNo = comBoxPaymentNo.getEditor().getText().trim();
@@ -247,37 +248,9 @@ public class PaymentFormController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
-
-    public void comBoxOnActionSearchPaymentNo(KeyEvent keyEvent) {
-        /*if (keyEvent.getCode() == KeyCode.ENTER) {
-            String selectedName = comBoxPaymentNo.getEditor().getText();
-
-            // Ensure there is a valid name entered in the ComboBox
-            if (selectedName != null && !selectedName.trim().isEmpty()) {
-                try {
-                    // Fetch the supplier details by name
-                    List<String> supplier = PaymentRepo.nameSearch(selectedName);
-
-                    if (supplier != null && supplier.size() > 1) {
-                        // Set the supplier details to ComboBoxes or other UI elements
-                        comBoxPaymentNo.setValue(supplier.get(1)); // Supplier contact
-                        comBoxName.setValue(supplier.get(0)); // Supplier name
-                    } else {
-                        if(comBoxContact.getValue()!=null){
-                            comBoxContact.setValue(null);
-                        }
-                        showSupplierNotFoundAlert();
-                    }
-
-                    // Trigger further actions based on the selected name
-                    comBoxOnActionSearchName(new ActionEvent());
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }*/
-
     }
+
+
+
+
 }

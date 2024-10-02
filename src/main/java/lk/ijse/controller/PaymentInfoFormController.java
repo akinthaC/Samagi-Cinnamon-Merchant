@@ -139,7 +139,7 @@ public class PaymentInfoFormController {
         Map<String,Object> data = new HashMap<>();
         data.put("NetTotal",lblTotalAmount.getText());
         data.put("OrId",lblOrderNo.getText());
-        data.put("Date",lblDate.getText());
+        data.put("date",lblDate.getText());
         data.put("Time",time);
         data.put("id",lblOrderNo.getText());
         data.put("Advance",txtPayAmount.getText());

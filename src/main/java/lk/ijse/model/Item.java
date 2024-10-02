@@ -10,8 +10,10 @@ import lombok.ToString;
 @Data
 @ToString
 public class Item {
+    private String itemId;
     private String itemName;
+    private String onHandWeight;
+    private String deletes;
     private String itemType;
-    private String status;
 
 }
