@@ -37,8 +37,8 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnOnActionItems(ActionEvent event) {
-
+    void btnOnActionItems(ActionEvent event) throws IOException {
+        loadFormWithAtractiveAnimation("/view/ItemForm.fxml");
     }
 
     @FXML
@@ -47,8 +47,8 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnOnActionSupplier(ActionEvent event) {
-
+    void btnOnActionSupplier(ActionEvent event) throws IOException {
+        loadFormWithAtractiveAnimation("/view/SupplierForm.fxml");
     }
 
     private void loadFormWithAtractiveAnimation(String formPath) throws IOException {

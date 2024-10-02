@@ -1,6 +1,7 @@
 package lk.ijse.repository;
 
 import lk.ijse.Db.DbConnection;
+import lk.ijse.model.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -151,5 +152,59 @@ public class SupplierRepo {
             return resultSet.getString("contact");
         }
         return null;
+    }
+
+    public static List<Supplier> getAll() throws SQLException {
+        String sql = "SELECT * FROM supplier where deletes='Active'";
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        List<Supplier> data = new ArrayList<>();
+
+        ResultSet resultSet = connection.createStatement().executeQuery(sql);
+        while (resultSet.next()) {
+            data.add(new Supplier(
+                    resultSet.getString("supplierId"),
+                    resultSet.getString("name"),
+                    resultSet.getString("address"),
+                    resultSet.getString("contact"),
+                    resultSet.getString("deletes")
+            ));
+        }
+        return data;
+    }
+
+    public static boolean addSupplier(Supplier supplier) throws SQLException {
+        String sql = "INSERT INTO supplier(name,address,contact,deletes) VALUES(?, ?, ?, ?);";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setObject(1, supplier.getName());
+        pstm.setObject(2, supplier.getAddress());
+        pstm.setObject(3, supplier.getContact());
+        pstm.setObject(4,supplier.getStatus());
+
+        return pstm.executeUpdate() > 0;
+    }
+
+    public static boolean deleteSupplier(String supplierId) throws SQLException {
+
+        String sql = "UPDATE supplier set deletes='Inactive' WHERE supplierId = ? ";
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1, supplierId);
+        return pstm.executeUpdate() >0;
+    }
+
+    public static boolean updateSupplier(String supplierId, String name, String address, String contact) throws SQLException {
+        System.out.println(supplierId);
+        String sql = "UPDATE supplier set name = ?, address = ?, contact = ? WHERE supplierId = ?";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1, name);
+        pstm.setObject(2, address);
+        pstm.setObject(3, contact);
+        pstm.setObject(4, supplierId);
+
+        return pstm.executeUpdate() > 0;
     }
 }
