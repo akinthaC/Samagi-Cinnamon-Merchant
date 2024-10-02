@@ -25,7 +25,11 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+
       <JFXComboBox fx:id="comBoxPaymentNo" layoutX="246.0" layoutY="379.0" onKeyPressed="#PaymentNoOnKeyPressed" onKeyReleased="#PaymentNoOnKeyReleased" prefHeight="26.0" prefWidth="116.0" />
+
+      <JFXComboBox fx:id="comBoxPaymentNo" labelFloat="true" layoutX="246.0" layoutY="379.0" onKeyPressed="#comBoxOnActionSearchPaymentNo" prefHeight="26.0" prefWidth="162.0" promptText="Press Enter To Search" />
+
       <Label layoutX="124.0" layoutY="644.0" prefHeight="26.0" prefWidth="66.0" text="Date :-">
          <font>
             <Font name="System Bold" size="16.0" />

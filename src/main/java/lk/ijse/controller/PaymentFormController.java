@@ -168,6 +168,7 @@ public class PaymentFormController {
         stage.show();
     }
 
+
     public void PaymentNoOnKeyPressed(KeyEvent keyEvent) {
         /*System.out.println("aaaaaaaaaa");
         if (keyEvent.getCode() == KeyCode.ENTER) {
@@ -246,6 +247,37 @@ public class PaymentFormController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+
+
+    public void comBoxOnActionSearchPaymentNo(KeyEvent keyEvent) {
+        /*if (keyEvent.getCode() == KeyCode.ENTER) {
+            String selectedName = comBoxPaymentNo.getEditor().getText();
+
+            // Ensure there is a valid name entered in the ComboBox
+            if (selectedName != null && !selectedName.trim().isEmpty()) {
+                try {
+                    // Fetch the supplier details by name
+                    List<String> supplier = PaymentRepo.nameSearch(selectedName);
+
+                    if (supplier != null && supplier.size() > 1) {
+                        // Set the supplier details to ComboBoxes or other UI elements
+                        comBoxPaymentNo.setValue(supplier.get(1)); // Supplier contact
+                        comBoxName.setValue(supplier.get(0)); // Supplier name
+                    } else {
+                        if(comBoxContact.getValue()!=null){
+                            comBoxContact.setValue(null);
+                        }
+                        showSupplierNotFoundAlert();
+                    }
+
+                    // Trigger further actions based on the selected name
+                    comBoxOnActionSearchName(new ActionEvent());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }*/
 
     }
 }

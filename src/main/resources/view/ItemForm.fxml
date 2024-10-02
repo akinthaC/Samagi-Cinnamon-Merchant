@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.controller.ItemFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="724.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ItemFormController">
+    <children>
+        <TableView fx:id="tblPayment" layoutX="124.0" layoutY="65.0" prefHeight="266.0" prefWidth="646.0">
+            <columns>
+                <TableColumn fx:id="colItemId" prefWidth="94.40000915527344" text="Item ID" />
+                <TableColumn fx:id="colItemName" prefWidth="189.6000518798828" text="Item Name" />
+                <TableColumn fx:id="colOnHandWeight" prefWidth="185.5999755859375" text="On Hand Weight" />
+                <TableColumn fx:id="colItemType" prefWidth="174.39999999999998" text="Item Type" />
+            </columns>
+        </TableView>
+        <Label layoutX="533.0" layoutY="396.0" prefHeight="26.0" prefWidth="88.0" text="Item Type:-">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="124.0" layoutY="396.0" prefHeight="26.0" prefWidth="130.0" text="Item Name :-">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtItemName" layoutX="257.0" layoutY="392.0" prefHeight="34.0" prefWidth="207.0">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <Label layoutX="126.0" layoutY="466.0" prefHeight="26.0" prefWidth="150.0" text="On Hand Weight :-">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtOnHandWeight" layoutX="276.0" layoutY="462.0" prefHeight="34.0" prefWidth="227.0">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <JFXButton buttonType="RAISED" layoutX="124.0" layoutY="637.0" onAction="#btnOnActionAddItem" prefHeight="43.0" prefWidth="159.0" ripplerFill="#009e05" style="-fx-background-color: #009e05;" text="Add Item" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="592.0" layoutY="637.0" onAction="#btnOnActionDelete" prefHeight="20.0" prefWidth="150.0" ripplerFill="RED" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="335.0" layoutY="637.0" onAction="#btnOnActionUpdateItem" prefHeight="43.0" prefWidth="207.0" ripplerFill="#009e05" style="-fx-background-color: #3498db;" text="Update Item" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </JFXButton>
+        <ImageView fitHeight="603.0" fitWidth="646.0" layoutX="877.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/person-moving-house-furniture.png" />
+            </image>
+        </ImageView>
+      <JFXComboBox fx:id="comBoxItemType" layoutX="630.0" layoutY="396.0" prefHeight="26.0" prefWidth="138.0" />
+    </children>
 </AnchorPane>
