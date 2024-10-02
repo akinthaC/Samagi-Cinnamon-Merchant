@@ -15,5 +15,4 @@ public class Item {
     private String onHandWeight;
     private String deletes;
     private String itemType;
-
 }

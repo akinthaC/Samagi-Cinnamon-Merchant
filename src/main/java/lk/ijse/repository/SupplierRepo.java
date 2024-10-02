@@ -195,7 +195,7 @@ public class SupplierRepo {
     }
 
     public static boolean updateSupplier(String supplierId, String name, String address, String contact) throws SQLException {
-        System.out.println(supplierId);
+
         String sql = "UPDATE supplier set name = ?, address = ?, contact = ? WHERE supplierId = ?";
 
         Connection connection = DbConnection.getInstance().getConnection();
